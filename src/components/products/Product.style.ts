@@ -34,10 +34,23 @@ export const StyledProductItem = styled.div`
         margin-bottom: 1.5rem;
         object-fit: fill;
     }
-
+    img + p {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2.4rem;
+        line-height: 160%;
+        color: #8d8f9a;
+        text-transform: uppercase;
+    }
     p {
-        font-size: 0.65rem;
-        line-height: 1.75rem;
+        font-size: 1.8rem;
+        line-height: 160%;
     }
 
     .title {
@@ -52,8 +65,8 @@ export const StyledProductItem = styled.div`
         display: none;
         right: 4rem;
         bottom: 4.7rem;
-        width: 3.25rem;
-        height: 3.25rem;
+        width: 5.2rem;
+        height: 5.2rem;
         outline: none;
         border: none;
         justify-content: center;
@@ -75,6 +88,10 @@ export const StyledProductItem = styled.div`
     :hover {
         > button {
             display: flex;
+
+            :disabled {
+                display: none;
+            }
         }
         box-shadow: 0px 4px 35px rgba(168, 172, 176, 0.19);
     }

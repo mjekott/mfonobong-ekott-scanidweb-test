@@ -48,7 +48,6 @@ export default class Toggler extends PureComponent<Props, { open: boolean }> {
     };
 
     render() {
-        console.log(this.state.open);
         return this.props.children({
             ref: this.divRef,
             open: this.state.open,

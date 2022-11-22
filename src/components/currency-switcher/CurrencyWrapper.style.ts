@@ -9,7 +9,8 @@ export const Wrapper = styled.div`
         justify-content: center;
         cursor: pointer;
         > p {
-            font-size: 1.125rem;
+            font-size: 1.5rem;
+            line-height: 160%;
             margin-right: 0.5rem;
         }
     }

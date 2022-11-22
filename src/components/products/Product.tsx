@@ -1,15 +1,17 @@
 import { Component } from 'react';
+import { ConnectedProps, connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import IconCart from 'assets/IconCart';
 import { GetProducts_category_products } from 'graphql-types/GetProducts';
 
 import { StyledProductItem } from './Product.style';
+import allActions from '@/store/allActions';
+import { RootState } from '@/store/store';
 
 type Props = {
     product: GetProducts_category_products;
-    currency: string;
-};
+} & PropsFromRedux;
 
 class Product extends Component<Props> {
     state = {};
@@ -22,10 +24,10 @@ class Product extends Component<Props> {
     };
 
     render() {
-        const { product } = this.props;
+        const { product, increaseCartQuantity } = this.props;
         return (
             <StyledProductItem>
-                <Link to={'/'}>
+                <Link style={{ position: 'relative' }} to={'/'}>
                     <img
                         src={
                             (product.gallery &&
@@ -34,10 +36,16 @@ class Product extends Component<Props> {
                         }
                         alt={product.name}
                     />
+                    {!product.inStock && <p>out of stock</p>}
                 </Link>
                 <p className="title">{product.name}</p>
                 <p className="price">{this.getAmount()}</p>
-                <button>
+                <button
+                    disabled={!product.inStock}
+                    onClick={() => {
+                        increaseCartQuantity({ product });
+                    }}
+                >
                     <IconCart />
                 </button>
             </StyledProductItem>
@@ -45,4 +53,13 @@ class Product extends Component<Props> {
     }
 }
 
-export default Product;
+const mapStateToProps = (state: RootState) => ({
+    currency: state.cart.currency,
+});
+
+const { increaseCartQuantity } = allActions;
+
+const connector = connect(mapStateToProps, { increaseCartQuantity });
+type PropsFromRedux = ConnectedProps<typeof connector>;
+
+export default connector(Product);

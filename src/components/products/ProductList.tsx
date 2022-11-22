@@ -16,11 +16,7 @@ class ProductList extends Component<Props> {
             <ProductListContainer>
                 {products.length > 0 &&
                     products.map((product) => (
-                        <ProductItem
-                            key={product.name}
-                            product={product}
-                            currency="$"
-                        />
+                        <ProductItem key={product.name} product={product} />
                     ))}
             </ProductListContainer>
         );

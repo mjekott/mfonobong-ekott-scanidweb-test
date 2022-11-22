@@ -3,6 +3,7 @@
     "version": "0.1.0",
     "private": true,
     "dependencies": {
+        "@apollo/client": "^3.7.1",
         "@reduxjs/toolkit": "^1.9.0",
         "@testing-library/jest-dom": "^5.16.5",
         "@testing-library/react": "^13.4.0",
@@ -12,6 +13,7 @@
         "@types/react": "^18.0.25",
         "@types/react-dom": "^18.0.9",
         "craco": "^0.0.3",
+        "graphql": "^16.6.0",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "react-redux": "^8.0.5",
@@ -25,7 +27,8 @@
         "start": "craco start",
         "build": "craco build",
         "test": "craco test",
-        "eject": "craco eject"
+        "eject": "craco eject",
+        "apollo:codegen": "apollo client:codegen src/api-types --target=typescript --outputFlat"
     },
     "eslintConfig": {
         "extends": [

@@ -9,14 +9,14 @@ const Cart = lazy(() => import('@/screens/cart/Cart'));
 
 function App() {
     return (
-        <Routes>
-            <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<div>loading...</div>}>
+            <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/:slug" element={<Home />} />
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/product/slug" element={<ProductDetails />} />
-            </Suspense>
-        </Routes>
+            </Routes>
+        </Suspense>
     );
 }
 

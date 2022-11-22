@@ -12,7 +12,7 @@
         "module": "esnext",
         "moduleResolution": "node",
         "resolveJsonModule": true,
-        "isolatedModules": true,
+        "isolatedModules": false,
         "noEmit": true,
         "jsx": "react-jsx",
         "baseUrl": "src",
@@ -21,7 +21,8 @@
             "@/assets/*": ["assets/*"],
             "@/providers/*": ["providers/*"],
             "@/store/*": ["store/*"],
-            "@/screens/*": ["screens/*"]
+            "@/screens/*": ["screens/*"],
+            "@/shared/*": ["shared/*"]
         }
     },
     "include": ["src"]

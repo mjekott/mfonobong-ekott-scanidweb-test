@@ -1,7 +1,6 @@
-import { createGlobalStyle } from 'styled-components';
-
-const GlobalStyle = createGlobalStyle`
-*,*::before,::after {
+*,
+*::before,
+::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -10,14 +9,9 @@ const GlobalStyle = createGlobalStyle`
     text-decoration: none;
 }
 
+html,
 body {
-	line-height: 1;
     font-family: 'Raleway', sans-serif;
-    font-size: 10px;
+    font-size: 62.5%;
     min-height: 100vh;
 }
-
-
-`;
-
-export default GlobalStyle;

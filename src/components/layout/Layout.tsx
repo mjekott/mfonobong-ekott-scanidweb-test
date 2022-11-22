@@ -1,6 +1,7 @@
-import React, { Component, ReactNode } from 'react';
+import { Component, ReactNode } from 'react';
 
-import { Header } from './Header';
+import Header from './Header';
+import { Container } from './Layout.style';
 
 type Props = {
     children: ReactNode;
@@ -12,10 +13,10 @@ export default class Layout extends Component<Props> {
     render() {
         const { children } = this.props;
         return (
-            <div>
+            <Container>
                 <Header />
                 <main>{children}</main>
-            </div>
+            </Container>
         );
     }
 }

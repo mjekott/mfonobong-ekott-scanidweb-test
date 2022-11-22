@@ -9,6 +9,7 @@ module.exports = {
             '@/screens': path.resolve(__dirname, 'src/screens'),
             '@/store': path.resolve(__dirname, 'src/store'),
             '@/utils': path.resolve(__dirname, 'src/utils'),
+            '@/shared': path.resolve(__dirname, 'src/shared'),
         },
     },
 };

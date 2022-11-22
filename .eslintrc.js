@@ -17,8 +17,8 @@ module.exports = {
     },
     plugins: ['react', '@typescript-eslint'],
     rules: {
+        'max-len': [1, { code: 80 }],
         'react/react-in-jsx-scope': 'off',
-        'linebreak-style': ['error', 'unix'],
         semi: ['error', 'always'],
     },
 };

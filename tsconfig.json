@@ -21,7 +21,7 @@
             "@/assets/*": ["assets/*"],
             "@/providers/*": ["providers/*"],
             "@/store/*": ["store/*"],
-            "@/pages/*": ["pages/*"]
+            "@/screens/*": ["screens/*"]
         }
     },
     "include": ["src"]

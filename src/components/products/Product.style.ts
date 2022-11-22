@@ -64,7 +64,7 @@ export const StyledProductItem = styled.div`
         position: absolute;
         display: none;
         right: 4rem;
-        bottom: 4.7rem;
+        bottom: 5.8rem;
         width: 5.2rem;
         height: 5.2rem;
         outline: none;

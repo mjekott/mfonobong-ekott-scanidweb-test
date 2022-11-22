@@ -28,6 +28,9 @@ export const HeaderButton = styled.span`
 export const RightSide = styled.div`
     display: flex;
     align-items: center;
+    > :first-child {
+        margin-right: 2.2rem;
+    }
 `;
 
 export const LogoWrapper = styled(Link)`

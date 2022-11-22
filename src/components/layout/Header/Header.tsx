@@ -16,6 +16,7 @@ import SideBar from './SideBar/SideBar';
 import CategoryMenu from './category-menu/CategoryMenu';
 import { withCategories } from './withCategories';
 import { Logo } from '@/assets/Logo';
+import CurrencySwitcher from '@/components/currency-switcher/CurrencySwitcher';
 
 class Header extends Component<ChildProps<{}, GetCategories>, {}> {
     state = {
@@ -79,7 +80,9 @@ class Header extends Component<ChildProps<{}, GetCategories>, {}> {
                     <LogoWrapper to="/">
                         <Logo />
                     </LogoWrapper>
-                    <RightSide></RightSide>
+                    <RightSide>
+                        <CurrencySwitcher />
+                    </RightSide>
                 </HeaderWrapper>
                 <SideBar
                     handleClose={this.closeSidebar}

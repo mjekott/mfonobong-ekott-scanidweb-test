@@ -1,6 +1,6 @@
 import { Component } from 'react';
 
-import { ChildProps, graphql } from '@apollo/client/react/hoc';
+import { ChildProps } from '@apollo/client/react/hoc';
 import {
     GetCategories,
     GetCategories_categories,
@@ -14,7 +14,7 @@ import {
 } from './Header.style';
 import SideBar from './SideBar/SideBar';
 import CategoryMenu from './category-menu/CategoryMenu';
-import { GET_CATEGORIES } from './category-menu/query';
+import { withCategories } from './withCategories';
 import { Logo } from '@/assets/Logo';
 
 class Header extends Component<ChildProps<{}, GetCategories>, {}> {
@@ -91,4 +91,4 @@ class Header extends Component<ChildProps<{}, GetCategories>, {}> {
     }
 }
 
-export default graphql<{}, GetCategories>(GET_CATEGORIES)(Header);
+export default withCategories(Header);

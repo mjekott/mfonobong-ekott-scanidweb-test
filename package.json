@@ -28,7 +28,7 @@
         "build": "craco build",
         "test": "craco test",
         "eject": "craco eject",
-        "apollo:codegen": "apollo client:codegen src/api-types --target=typescript --outputFlat"
+        "apollo:codegen": "apollo client:codegen src/graphql-types --target=typescript --outputFlat"
     },
     "eslintConfig": {
         "extends": [
@@ -58,6 +58,7 @@
         "eslint-config-prettier": "^8.5.0",
         "eslint-plugin-prettier": "^4.2.1",
         "eslint-plugin-react": "^7.31.11",
+        "eslint-plugin-unused-imports": "^2.0.0",
         "prettier": "^2.7.1"
     }
 }

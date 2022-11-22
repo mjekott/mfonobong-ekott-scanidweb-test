@@ -3,3 +3,4 @@ setupTests.ts
 node_modules
 craco.config.js
 .eslintrc.js
+apollo.config.js

@@ -1,13 +1,9 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
-type Props = {};
+export default class CurrencySwitcher extends Component {
+    state = {};
 
-type State = {};
-
-export default class CurrencySwitcher extends Component<Props, State> {
-  state = {};
-
-  render() {
-    return <div>CurrencySwitcher</div>;
-  }
+    render() {
+        return <div>CurrencySwitcher</div>;
+    }
 }

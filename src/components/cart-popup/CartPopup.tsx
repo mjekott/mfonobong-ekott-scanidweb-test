@@ -76,7 +76,10 @@ class Cart extends Component<Props> {
                                             </span>
                                         </p>
                                     </div>
-                                    <div className="checkout">
+                                    <div
+                                        className="checkout"
+                                        onClick={handleClose}
+                                    >
                                         <Link to="/cart">View bag</Link>
                                         <Link to="/cart">Check out</Link>
                                     </div>

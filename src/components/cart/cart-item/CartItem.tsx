@@ -43,15 +43,11 @@ class CartItem extends Component<Props> {
             return item.attributeId === data.attributeId;
         });
 
-        console.log(item.selectedVariants);
-        console.log(data);
-
         if (index > -1) {
             newVariants[index] = data;
         } else {
             newVariants?.push(data);
         }
-        console.log(newVariants);
 
         updateVariant({
             cartId: item.id,

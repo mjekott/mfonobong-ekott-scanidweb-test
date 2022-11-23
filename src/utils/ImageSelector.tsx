@@ -4,6 +4,7 @@ interface IVariable {
     handleNext: () => void;
     handlePrev: () => void;
     handleSelect: (value: number) => void;
+    noOfImage: number;
     currentIndex: number;
 }
 
@@ -62,6 +63,7 @@ export default class ImageSelector extends Component<Props, State> {
     render() {
         return this.props.children({
             currentIndex: this.state.currentIndex,
+            noOfImage: this.state.noOfImages,
             handleNext: this.handleNext,
             handlePrev: this.handlePrev,
             handleSelect: this.handleSelect,

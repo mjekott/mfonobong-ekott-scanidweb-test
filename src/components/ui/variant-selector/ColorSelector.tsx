@@ -10,17 +10,11 @@ export default class ColorSelector extends Component<TypeVariantProps> {
         }
     }
     render() {
-        const {
-            items,
-            handleChange,
-            selected,
-            name,
-            size = 'small',
-        } = this.props;
+        const { items, handleChange, selected, name } = this.props;
 
         return (
             <Wrapper>
-                <p>{name}</p>
+                <p>{name}:</p>
                 <div style={{ display: 'flex', gap: 5 }}>
                     {items.items?.map((item) => (
                         <ColorBoxContainer
@@ -28,7 +22,6 @@ export default class ColorSelector extends Component<TypeVariantProps> {
                             key={item?.id}
                         >
                             <ColorBox
-                                size={size}
                                 color={item?.value as string}
                                 selected={item?.id === selected.item.id}
                                 onClick={() =>

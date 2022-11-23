@@ -5,7 +5,7 @@ const Home = lazy(() => import('@/screens/home/Home'));
 const ProductDetails = lazy(
     () => import('@/screens/product-detail/ProductDetails'),
 );
-const Cart = lazy(() => import('@/screens/cart/Cart'));
+const CartPage = lazy(() => import('@/screens/cart/Cart'));
 
 function App() {
     return (
@@ -13,7 +13,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/:slug" element={<Home />} />
-                <Route path="/cart" element={<Cart />} />
+                <Route path="/cart" element={<CartPage />} />
                 <Route path="/product/slug" element={<ProductDetails />} />
             </Routes>
         </Suspense>

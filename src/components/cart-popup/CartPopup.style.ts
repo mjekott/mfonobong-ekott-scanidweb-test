@@ -72,6 +72,64 @@ export const Wrapper = styled.div`
             overflow-y: auto;
             height: auto;
             margin-bottom: 2rem;
+
+            .item {
+                line-height: 2rem;
+                max-height: 25rem;
+                height: auto;
+                border: none;
+                .left {
+                    .title {
+                        margin-bottom: 0.5rem;
+                        font-size: 1.6rem;
+                        line-height: 160%;
+                        font-weight: 300;
+                        word-wrap: break-word;
+                    }
+                    .price {
+                        font-size: 1.6rem;
+                        line-height: 160%;
+                        font-weight: 500;
+                    }
+                }
+
+                .right {
+                    > div:first-child {
+                        margin-right: 0.5rem;
+                        button {
+                            width: 2.8rem;
+                            height: 2.8rem;
+                            > svg {
+                                width: 1.4rem;
+                                height: 1.4rem;
+                                stroke: #1d1f22;
+                            }
+                        }
+
+                        p {
+                            font-size: 1.8rem;
+                        }
+                    }
+                    .imageHolder {
+                        height: 15rem;
+                        width: 12.1rem;
+                    }
+                }
+                .variant-wrapper {
+                    > P {
+                        font-size: 1.4rem;
+                    }
+
+                    .variantBox {
+                        padding: 0.5rem;
+                    }
+
+                    .colorBox {
+                        width: 1.6rem;
+                        height: 1.6rem;
+                    }
+                }
+            }
         }
 
         .amount {
@@ -214,78 +272,4 @@ export const CartContainer = styled.div`
             color: #fff;
         }
     }
-`;
-
-export const CartItemStyled = styled.div`
-    width: 100%;
-    display: flex;
-    max-height: 25rem;
-    height: auto;
-    justify-content: space-between;
-    margin-top: 4rem;
-
-    img {
-        height: 100%;
-        width: 12.1rem;
-    }
-`;
-
-export const CartItemLeft = styled.div`
-    display: flex;
-    justify-content: space-between;
-    flex: 1;
-    margin-right: 0.5rem;
-    padding: 0.2rem 0rem;
-
-    > .info {
-        display: flex;
-        flex-direction: column;
-        h3 {
-            font-size: 1.6rem;
-            line-height: 160%;
-            font-weight: 300;
-            word-wrap: break-word;
-        }
-        p {
-            font-size: 1.6rem;
-            line-height: 160%;
-            font-weight: 500;
-        }
-    }
-`;
-export const CartItemRight = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 12.1rem;
-    > img {
-        height: 100%;
-        width: 100%;
-    }
-`;
-
-export const CartAction = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin-left: 1rem;
-    > button {
-        width: 2.4rem;
-        height: 2.4rem;
-        border: 1px solid black;
-        outline: none;
-        background: #fff;
-    }
-    > span {
-        font-size: 1.6rem;
-        font-weight: 500;
-        line-height: 160%;
-    }
-`;
-
-export const Attributes = styled.div`
-    margin-top: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 0.3rem;
 `;

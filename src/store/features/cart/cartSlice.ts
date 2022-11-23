@@ -6,6 +6,7 @@ import { ICartItem, ICartState } from './cart.interface';
 const initialState: ICartState = {
     cart: [],
     currency: '$',
+    tax: 0.21,
 };
 
 const modifyQtyByOne = (

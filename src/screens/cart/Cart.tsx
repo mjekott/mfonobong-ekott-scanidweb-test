@@ -1,9 +1,11 @@
 import { Component } from 'react';
 
-export default class Cart extends Component {
+import Cart from '@/components/cart/Cart';
+
+export default class CartPage extends Component {
     state = {};
 
     render() {
-        return <div>cart</div>;
+        return <Cart />;
     }
 }

@@ -4,10 +4,14 @@ type Props = {
     size?: 'big' | 'small';
 };
 
-export const Wrapper = styled.div<Props>`
+export const Wrapper = styled.div.attrs({
+    className: 'variant-wrapper',
+})<Props>`
     > p {
         display: block;
-        font-size: ${(props) => (props.size === 'small' ? '1.4rem' : '1.8rem')};
+        font-size: 1.8rem;
+        font-weight: ${(props) => (props.size === 'small' ? 400 : 700)};
+        margin-bottom: 0.8rem;
     }
 
     > div {
@@ -16,9 +20,11 @@ export const Wrapper = styled.div<Props>`
     }
 `;
 
-export const Box = styled.button<{ selected: boolean; size?: 'big' | 'small' }>`
+export const Box = styled.button.attrs({ className: 'variantBox' })<{
+    selected: boolean;
+}>`
     font-size: 1.4rem;
-    padding: ${(props) => (props.size === 'small' ? '0.5rem' : '2.8rem')};
+    padding: 1.2rem;
     border: 1px solid #000;
     display: flex;
     justify-content: center;
@@ -27,13 +33,12 @@ export const Box = styled.button<{ selected: boolean; size?: 'big' | 'small' }>`
     color: ${(props) => (props.selected ? '#fff' : '#000')};
 `;
 
-export const ColorBox = styled.button<{
+export const ColorBox = styled.button.attrs({ className: 'colorBox' })<{
     selected: boolean;
-    size?: 'big' | 'small';
     color: string;
 }>`
-    width: ${(props) => (props.size === 'small' ? '1.6rem' : '3.6rem')};
-    height: ${(props) => (props.size === 'small' ? '1.6rem' : '3.6rem')};
+    width: 3.6rem;
+    height: 3.6rem;
     background: ${(props) => props.color};
 `;
 

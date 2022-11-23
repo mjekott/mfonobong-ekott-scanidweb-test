@@ -15,4 +15,5 @@ export interface ICartItem {
 export interface ICartState {
     cart: ICartItem[];
     currency: string;
+    tax: number;
 }

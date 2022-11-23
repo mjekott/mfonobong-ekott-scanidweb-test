@@ -13,5 +13,4 @@ export type TypeVariantProps = {
     handleChange: (data: TypeSelectedProps) => void;
     selected: TypeSelectedProps;
     name: string;
-    size?: 'big' | 'small';
 };

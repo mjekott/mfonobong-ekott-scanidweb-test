@@ -6,8 +6,10 @@ import IconCart from 'assets/IconCart';
 import { RootState } from 'store/store';
 import Toggler from 'utils/Toggler';
 
+import CartItem from '../cart/cart-item/CartItem';
+
 import { Wrapper } from './CartPopup.style';
-import CartPopupItem from './CartPopupItem';
+import { getTotal, getTotalQuantity } from '@/store/features/cart/helpers';
 
 type Props = PropsFromRedux;
 
@@ -48,15 +50,22 @@ class Cart extends Component<Props> {
                                     </div>
                                     {cartItems.length > 0 && (
                                         <div className="cart-items">
-                                            {cartItems.map((item) => (
-                                                <CartPopupItem
-                                                    item={item}
-                                                    key={item.product.id}
-                                                    currency={
-                                                        this.props.currency
-                                                    }
-                                                />
-                                            ))}
+                                            {cartItems.length > 0 && (
+                                                <div className="cart-items">
+                                                    {cartItems.map((item) => (
+                                                        <CartItem
+                                                            item={item}
+                                                            key={
+                                                                item.product.id
+                                                            }
+                                                            currency={
+                                                                this.props
+                                                                    .currency
+                                                            }
+                                                        />
+                                                    ))}
+                                                </div>
+                                            )}
                                         </div>
                                     )}
                                     <div className="amount">
@@ -87,20 +96,8 @@ const mapStateToProps = (state: RootState) => {
     return {
         cartItems: state.cart.cart,
         currency: state.cart.currency,
-        totalCart: state.cart.cart.reduce(
-            (acc, curr) => acc + curr.quantity,
-            0,
-        ),
-        totalAmount: state.cart.cart.reduce((acc, curr) => {
-            let amount = 0;
-            const price = curr.product.prices.find(
-                (item) => item.currency.symbol === state.cart.currency,
-            );
-            if (price) {
-                amount = price.amount;
-            }
-            return acc + amount * curr.quantity;
-        }, 0),
+        totalCart: getTotalQuantity(state),
+        totalAmount: getTotal(state),
     };
 };
 

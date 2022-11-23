@@ -29,6 +29,7 @@ class Product extends Component<Props> {
             <StyledProductItem>
                 <Link style={{ position: 'relative' }} to={'/'}>
                     <img
+                        loading="lazy"
                         src={
                             (product.gallery &&
                                 (product.gallery[0] as string)) ||

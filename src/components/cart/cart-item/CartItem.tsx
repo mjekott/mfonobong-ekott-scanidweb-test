@@ -15,8 +15,12 @@ import {
     ItemRightImage,
 } from './Cartitem.style';
 import VariantSelector from '@/components/ui/variant-selector/VariantSelector';
+import { TypeSelectedProps } from '@/components/ui/variant-selector/variant.interface';
 import allActions from '@/store/allActions';
-import { ICartItem } from '@/store/features/cart/cart.interface';
+import {
+    ICartItem,
+    SelectedVariant,
+} from '@/store/features/cart/cart.interface';
 
 type Props = PropsFromRedux & { item: ICartItem; currency: string };
 
@@ -28,9 +32,40 @@ class CartItem extends Component<Props> {
         return `${this.props.currency}${match?.amount}`;
     };
 
+    handleVariantChange = (data: TypeSelectedProps) => {
+        const { item, updateVariant } = this.props;
+
+        let newVariants: SelectedVariant[] = [];
+        if (item.selectedVariants) {
+            newVariants = [...item.selectedVariants];
+        }
+        const index = newVariants.findIndex((item) => {
+            return item.attributeId === data.attributeId;
+        });
+
+        console.log(item.selectedVariants);
+        console.log(data);
+
+        if (index > -1) {
+            newVariants[index] = data;
+        } else {
+            newVariants?.push(data);
+        }
+        console.log(newVariants);
+
+        updateVariant({
+            cartId: item.id,
+            selectedVariant: newVariants,
+        });
+    };
+
     render() {
-        const { increaseCartQuantity, decreaseCartQuantity, updateAttr, item } =
-            this.props;
+        const {
+            increaseCartQuantity,
+            decreaseCartQuantity,
+
+            item,
+        } = this.props;
 
         return (
             <Item>
@@ -38,33 +73,32 @@ class CartItem extends Component<Props> {
                     <ItemHeader>{item.product.name}</ItemHeader>
                     <ItemPrice>{this.getAmount()}</ItemPrice>
                     <ItemLeftVariant>
-                        {item.product.attributes?.map((attribute) => (
-                            <VariantSelector
-                                handleChange={(data) => {
-                                    updateAttr({
-                                        productId: item.product.id,
-                                        attributeId: attribute?.id as string,
-                                        item: data.item,
-                                    });
-                                }}
-                                selected={{
-                                    item: item.selectedAttribute?.find(
-                                        (item) =>
-                                            item.attributeId === attribute?.id,
-                                    )?.item as any,
-                                }}
-                                name={attribute?.name as string}
-                                key={attribute?.id as string}
-                                items={attribute as any}
-                            />
-                        ))}
+                        {item.product.attributes.map((attribute) => {
+                            const match =
+                                item.selectedVariants &&
+                                item.selectedVariants.find(
+                                    (variant) =>
+                                        variant.attributeId === attribute?.id,
+                                );
+
+                            return (
+                                <VariantSelector
+                                    value={match}
+                                    handleChange={this.handleVariantChange}
+                                    name={attribute?.name as string}
+                                    id={attribute?.id as string}
+                                    items={attribute.items}
+                                    key={attribute?.id}
+                                />
+                            );
+                        })}
                     </ItemLeftVariant>
                 </ItemLeft>
                 <ItemRight>
                     <div>
                         <button
                             onClick={() => {
-                                increaseCartQuantity({ product: item.product });
+                                increaseCartQuantity({ cartId: item.id });
                             }}
                         >
                             <svg
@@ -84,7 +118,7 @@ class CartItem extends Component<Props> {
                         <p>{item.quantity}</p>
                         <button
                             onClick={() => {
-                                decreaseCartQuantity({ product: item.product });
+                                decreaseCartQuantity({ cartId: item.id });
                             }}
                         >
                             <svg
@@ -103,7 +137,6 @@ class CartItem extends Component<Props> {
                         </button>
                     </div>
                     <ItemRightImage>
-                        {/* schema has a null condition  */}
                         <ImageSelector
                             noOfImages={
                                 item.product.gallery
@@ -175,11 +208,12 @@ class CartItem extends Component<Props> {
     }
 }
 
-const { increaseCartQuantity, decreaseCartQuantity, updateAttr } = allActions;
+const { increaseCartQuantity, decreaseCartQuantity, updateVariant } =
+    allActions;
 const connector = connect(undefined, {
     increaseCartQuantity,
     decreaseCartQuantity,
-    updateAttr,
+    updateVariant,
 });
 
 type PropsFromRedux = ConnectedProps<typeof connector>;

@@ -1,7 +1,7 @@
 import { Component } from 'react';
 
-import { GetCategories_categories } from 'graphql-types/GetCategories';
 import { BackDrop } from 'shared/styles';
+import { ICategory } from 'shared/types';
 
 import CategoryMenuItem from '../category-menu/CategoryMenuItem';
 
@@ -10,7 +10,7 @@ import { SidebarContainer } from './SideBar.style';
 type Props = {
     open: boolean;
     handleClose: () => void;
-    categories: GetCategories_categories[];
+    categories: ICategory[];
 };
 
 class SideBar extends Component<Props> {

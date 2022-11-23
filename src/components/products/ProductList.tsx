@@ -1,12 +1,12 @@
 import { Component } from 'react';
 
-import { GetProducts_category_products } from 'graphql-types/GetProducts';
+import { IProduct } from 'shared/types';
 
 import ProductItem from './Product';
 import { ProductListContainer } from './Product.style';
 
 type Props = {
-    products: GetProducts_category_products[];
+    products: IProduct[];
 };
 
 class ProductList extends Component<Props> {

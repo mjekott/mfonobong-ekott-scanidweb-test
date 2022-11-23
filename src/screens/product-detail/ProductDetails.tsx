@@ -1,9 +1,21 @@
 import { Component } from 'react';
 
-export default class ProductDetail extends Component {
-    state = {};
+import { ChildProps } from '@apollo/client/react/hoc';
+import { WithRouterProps, withRouter } from 'hoc/withRouter';
+import { IGetProductDetails } from 'shared/types';
 
+import { withProduct } from './withProduct';
+
+// eslint-disable-next-line max-len
+
+type Props = WithRouterProps & ChildProps<{}, IGetProductDetails>;
+
+class ProductDetailScreen extends Component<Props> {
     render() {
-        return <div>hello</div>;
+        const { data } = this.props;
+        if (!data?.product) return null;
+        return null;
     }
 }
+
+export default withRouter(withProduct(ProductDetailScreen));

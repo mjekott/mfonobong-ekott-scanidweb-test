@@ -1,7 +1,8 @@
 // eslint-disable-next-line max-len
-import { GetProducts_category_products_attributes } from './../../../graphql-types/GetProducts';
+import { IAttribute } from 'shared/types';
 
 export type TypeSelectedProps = {
+    attributeId: string;
     item: {
         id: string;
         value: string;
@@ -9,8 +10,9 @@ export type TypeSelectedProps = {
 };
 
 export type TypeVariantProps = {
-    items: GetProducts_category_products_attributes;
+    items: IAttribute[];
     handleChange: (data: TypeSelectedProps) => void;
-    selected: TypeSelectedProps;
-    name: string;
+    value?: TypeSelectedProps;
+    name: string | undefined;
+    id: string;
 };

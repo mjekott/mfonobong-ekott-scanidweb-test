@@ -1,15 +1,18 @@
-import { GetProducts_category_products } from 'graphql-types/GetProducts';
+import { IProduct } from 'shared/types';
+
+export type SelectedVariant = {
+    attributeId: string;
+    item: {
+        id: string;
+        value: string;
+    };
+};
 
 export interface ICartItem {
+    id: string;
     quantity: number;
-    product: GetProducts_category_products;
-    selectedAttribute?: {
-        attributeId: string;
-        item: {
-            id: string;
-            value: string;
-        };
-    }[];
+    product: IProduct;
+    selectedVariants?: SelectedVariant[];
 }
 
 export interface ICartState {

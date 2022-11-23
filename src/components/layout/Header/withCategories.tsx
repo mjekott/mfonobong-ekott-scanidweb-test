@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client';
 import { graphql } from '@apollo/client/react/hoc';
-import { GetCategories } from 'graphql-types/GetCategories';
+import { IGetCategories } from 'shared/types';
 
 const GET_CATEGORIES = gql`
     query GetCategories {
@@ -10,4 +10,4 @@ const GET_CATEGORIES = gql`
     }
 `;
 
-export const withCategories = graphql<{}, GetCategories>(GET_CATEGORIES);
+export const withCategories = graphql<{}, IGetCategories>(GET_CATEGORIES);

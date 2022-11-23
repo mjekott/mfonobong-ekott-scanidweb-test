@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client';
 import { graphql } from '@apollo/client/react/hoc';
-import { GetCurrencies_currencies } from 'graphql-types/GetCurrencies';
+import { GetCurrencies } from 'shared/types';
 
 export const GET_CURRENCIES = gql`
     query GetCurrencies {
@@ -11,6 +11,4 @@ export const GET_CURRENCIES = gql`
     }
 `;
 
-export const withCurrencies = graphql<{}, GetCurrencies_currencies>(
-    GET_CURRENCIES,
-);
+export const withCurrencies = graphql<{}, GetCurrencies>(GET_CURRENCIES);

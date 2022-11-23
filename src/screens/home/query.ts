@@ -1,7 +1,4 @@
 import { gql } from '@apollo/client';
-import { graphql } from '@apollo/client/react/hoc';
-import { GetProducts } from 'graphql-types/GetProducts';
-import { WithRouterProps } from 'hoc/withRouter';
 
 export const GET_PRODUCTS = gql`
     query GetProducts($input: CategoryInput) {
@@ -34,14 +31,3 @@ export const GET_PRODUCTS = gql`
         }
     }
 `;
-
-export const withCategoryProducts = graphql<WithRouterProps, GetProducts>(
-    GET_PRODUCTS,
-    {
-        options: (props) => ({
-            variables: {
-                input: { title: props.params.slug ? props.params.slug : 'all' },
-            },
-        }),
-    },
-);

@@ -1,10 +1,7 @@
 import { Component } from 'react';
 
 import { ChildProps } from '@apollo/client/react/hoc';
-import {
-    GetCategories,
-    GetCategories_categories,
-} from 'graphql-types/GetCategories';
+import { IGetCategories } from 'shared/types';
 
 import {
     HeaderButton,
@@ -20,7 +17,7 @@ import { Logo } from '@/assets/Logo';
 import CartPopup from '@/components/cart-popup/CartPopup';
 import CurrencySwitcher from '@/components/currency-switcher/CurrencySwitcher';
 
-class Header extends Component<ChildProps<{}, GetCategories>, {}> {
+class Header extends Component<ChildProps<{}, IGetCategories>, {}> {
     state = {
         open: false,
     };
@@ -75,11 +72,7 @@ class Header extends Component<ChildProps<{}, GetCategories>, {}> {
                                 </svg>
                             )}
                         </HeaderButton>
-                        <CategoryMenu
-                            categories={
-                                data?.categories as GetCategories_categories[]
-                            }
-                        />
+                        <CategoryMenu categories={data?.categories || []} />
                         <LogoWrapper to="/">
                             <Logo />
                         </LogoWrapper>
@@ -92,7 +85,7 @@ class Header extends Component<ChildProps<{}, GetCategories>, {}> {
                 <SideBar
                     handleClose={this.closeSidebar}
                     open={open}
-                    categories={data?.categories as GetCategories_categories[]}
+                    categories={data?.categories || []}
                 />
             </>
         );

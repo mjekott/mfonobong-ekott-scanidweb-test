@@ -6,21 +6,22 @@ import { TypeVariantProps } from './variant.interface';
 
 export default class SizeSelector extends Component<TypeVariantProps> {
     render() {
-        const { items, handleChange, selected, name } = this.props;
+        const { items, handleChange, value, name, id } = this.props;
 
         return (
             <Wrapper>
                 <p>{name}:</p>
                 <div>
-                    {items.items?.map((item) => (
+                    {items.map((item) => (
                         <Box
-                            selected={item?.id === selected?.item.id}
+                            selected={item?.id === value?.item.id}
                             key={item?.id}
                             onClick={() =>
                                 handleChange({
+                                    attributeId: id,
                                     item: {
-                                        id: item?.id as string,
-                                        value: item?.value as string,
+                                        id: item.id,
+                                        value: item.value,
                                     },
                                 })
                             }

@@ -34,7 +34,7 @@ export const StyledProductItem = styled.div`
         margin-bottom: 1.5rem;
         object-fit: fill;
     }
-    img + p {
+    img + div {
         position: absolute;
         top: 0;
         left: 0;
@@ -47,6 +47,7 @@ export const StyledProductItem = styled.div`
         line-height: 160%;
         color: #8d8f9a;
         text-transform: uppercase;
+        background: rgba(255, 255, 255, 0.7);
     }
     p {
         font-size: 1.8rem;

@@ -1,7 +1,13 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
-import { IAddCartPayload } from './action.types';
-import { ICartItem, ICartState } from './cart.interface';
+import {
+    IAddCartPayload,
+    IModifyCartQuantity,
+    IUpdateVariant,
+} from './action.types';
+import { ICartState } from './cart.interface';
+import { modifyQtyByOne } from './helpers';
+import { addProductToCart } from './helpers/index';
 
 const initialState: ICartState = {
     cart: [],
@@ -9,65 +15,17 @@ const initialState: ICartState = {
     tax: 0.21,
 };
 
-const modifyQtyByOne = (
-    cart: ICartItem[],
-    payload: IAddCartPayload,
-    modificationType: 'INCREMENT' | 'DECREMENT',
-) => {
-    const previousCart = [...cart];
-
-    const productInCart = previousCart.find(
-        (item) => item.product.id === payload.product.id,
-    );
-
-    let newCart = [];
-
-    if (!productInCart) {
-        const variant = payload.product.attributes?.map((atrribute: any) => {
-            const value: {
-                attributeId: string;
-                item: {
-                    id: string;
-                    value: string;
-                };
-            } = {
-                attributeId: atrribute?.id,
-                item: {
-                    id: atrribute?.items[0]?.id,
-                    value: atrribute?.items[0]?.value,
-                },
-            };
-            return value;
-        });
-        previousCart.push({
-            ...payload,
-            quantity: 1,
-            selectedAttribute: variant,
-        });
-        newCart = previousCart;
-    } else {
-        const filteredCart = previousCart.filter(
-            (p) => p.product.id !== productInCart.product.id,
-        );
-
-        const modification = modificationType === 'INCREMENT' ? 1 : -1;
-
-        productInCart.quantity = productInCart.quantity + modification;
-
-        if (productInCart.quantity === 0) {
-            newCart = [...filteredCart];
-        } else {
-            newCart = previousCart;
-        }
-    }
-    return newCart;
-};
-
 export const cartSlice = createSlice({
     name: 'cart',
     initialState,
     reducers: {
-        increaseCartQuantity(state, action: PayloadAction<IAddCartPayload>) {
+        addToCart(state, action: PayloadAction<IAddCartPayload>) {
+            state.cart = addProductToCart(state.cart, action.payload);
+        },
+        increaseCartQuantity(
+            state,
+            action: PayloadAction<IModifyCartQuantity>,
+        ) {
             const modifiedCart = modifyQtyByOne(
                 state.cart,
                 action.payload,
@@ -75,7 +33,10 @@ export const cartSlice = createSlice({
             );
             state.cart = modifiedCart;
         },
-        decreaseCartQuantity(state, action: PayloadAction<IAddCartPayload>) {
+        decreaseCartQuantity(
+            state,
+            action: PayloadAction<IModifyCartQuantity>,
+        ) {
             const modifiedCart = modifyQtyByOne(
                 state.cart,
                 action.payload,
@@ -87,43 +48,12 @@ export const cartSlice = createSlice({
             state.cart = [];
         },
 
-        updateAttr(
-            state,
-            action: PayloadAction<{
-                productId: string;
-                attributeId: string;
-                item: {
-                    id: string;
-                    value: string;
-                };
-            }>,
-        ) {
-            // find product in cart
-
-            // find if variant exis
+        updateVariant(state, action: PayloadAction<IUpdateVariant>) {
             const cartItem = state.cart.find(
-                (item) => item.product.id === action.payload.productId,
+                (item) => item.id === action.payload.cartId,
             );
             if (!cartItem) return;
-            // find selected variant
-            let variant = cartItem.selectedAttribute?.find(
-                (item) => item.attributeId === action.payload.attributeId,
-            );
-            if (variant) {
-                variant = { ...action.payload };
-                cartItem.selectedAttribute = cartItem.selectedAttribute?.map(
-                    (item) => {
-                        if (item.attributeId === variant?.attributeId) {
-                            return { ...action.payload };
-                        }
-                        return item;
-                    },
-                );
-            } else {
-                cartItem.selectedAttribute?.push({ ...action.payload });
-            }
-
-            state.cart = [...state.cart];
+            cartItem.selectedVariants = action.payload.selectedVariant;
         },
 
         changeCurrency(state, action: PayloadAction<string>) {

@@ -55,9 +55,7 @@ class Cart extends Component<Props> {
                                                     {cartItems.map((item) => (
                                                         <CartItem
                                                             item={item}
-                                                            key={
-                                                                item.product.id
-                                                            }
+                                                            key={item.id}
                                                             currency={
                                                                 this.props
                                                                     .currency

@@ -1,5 +1,17 @@
-import { GetProducts_category_products } from 'graphql-types/GetProducts';
+import { IProduct } from 'shared/types';
+
+import { SelectedVariant } from './cart.interface';
 
 export interface IAddCartPayload {
-    product: GetProducts_category_products;
+    product: IProduct;
+    selectedVariant?: SelectedVariant[];
+}
+
+export interface IModifyCartQuantity {
+    cartId: string;
+}
+
+export interface IUpdateVariant {
+    cartId: string;
+    selectedVariant: SelectedVariant[];
 }

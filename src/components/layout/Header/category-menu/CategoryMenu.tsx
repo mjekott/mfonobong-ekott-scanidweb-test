@@ -1,12 +1,12 @@
 import { Component } from 'react';
 
-import { GetCategories_categories } from 'graphql-types/GetCategories';
+import { ICategory } from 'shared/types';
 
 import { CategoryMenuContainer } from './CategoryMenu.style';
 import CategoryMenuItem from './CategoryMenuItem';
 
 type Props = {
-    categories: GetCategories_categories[];
+    categories: ICategory[];
 };
 
 export default class CategoryMenu extends Component<Props> {

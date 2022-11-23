@@ -1,17 +1,14 @@
 import { Component } from 'react';
 
-import { ChildProps } from '@apollo/client/react/hoc';
-import {
-    GetProducts,
-    GetProducts_category_products,
-} from 'graphql-types/GetProducts';
+import { ChildProps, graphql } from '@apollo/client/react/hoc';
 import { WithRouterProps, withRouter } from 'hoc/withRouter';
 import { TitleHeader } from 'shared/styles';
+import { IGetProducts } from 'shared/types';
 
-import { withCategoryProducts } from './withProducts';
+import { GET_PRODUCTS } from './query';
 import ProductList from '@/components/products/ProductList';
 
-type Props = WithRouterProps & ChildProps<{}, GetProducts>;
+type Props = WithRouterProps & ChildProps<{}, IGetProducts>;
 
 class Home extends Component<Props> {
     state = {};
@@ -22,15 +19,20 @@ class Home extends Component<Props> {
         return (
             <>
                 <TitleHeader>{data?.category?.name}</TitleHeader>
-                <ProductList
-                    products={
-                        data?.category
-                            ?.products as GetProducts_category_products[]
-                    }
-                />
+                {data?.category?.products && (
+                    <ProductList products={data?.category?.products} />
+                )}
             </>
         );
     }
 }
 
-export default withRouter(withCategoryProducts(Home));
+export default withRouter(
+    graphql<WithRouterProps, IGetProducts>(GET_PRODUCTS, {
+        options: (props) => ({
+            variables: {
+                input: { title: props.params.slug ? props.params.slug : 'all' },
+            },
+        }),
+    })(Home),
+);

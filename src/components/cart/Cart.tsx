@@ -27,7 +27,7 @@ class Cart extends Component<Props> {
                             {cartItems.map((item) => (
                                 <CartItem
                                     item={item}
-                                    key={item.product.id}
+                                    key={item.id}
                                     currency={this.props.currency}
                                 />
                             ))}
@@ -47,10 +47,7 @@ class Cart extends Component<Props> {
                             </tr>
                             <tr>
                                 <td>Quantity:</td>
-                                <td>
-                                    {currency}
-                                    {totalQuantity}
-                                </td>
+                                <td>{totalQuantity}</td>
                             </tr>
                             <tr>
                                 <td>Total:</td>

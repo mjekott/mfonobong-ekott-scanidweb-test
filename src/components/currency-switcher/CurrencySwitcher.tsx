@@ -4,7 +4,7 @@ import { ConnectedProps, connect } from 'react-redux';
 import { ChildProps } from '@apollo/client/react/hoc';
 import IconArrowDown from 'assets/IconArrowDown';
 import IconArrowUp from 'assets/IconArrowUp';
-import { GetCurrencies } from 'graphql-types/GetCurrencies';
+import { GetCurrencies } from 'shared/types';
 import { RootState } from 'store/store';
 import Toggler from 'utils/Toggler';
 
@@ -46,7 +46,7 @@ class CurrencySwitcher extends Component<Props> {
                                             key={item?.label}
                                             onClick={() => {
                                                 this.props.changeCurrency(
-                                                    item!.symbol,
+                                                    item.symbol,
                                                 );
                                                 handleClose();
                                             }}

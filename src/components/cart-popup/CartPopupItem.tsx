@@ -1,7 +1,16 @@
+/* eslint-disable max-len */
 import { Component } from 'react';
 import { ConnectedProps, connect } from 'react-redux';
 
-import { CartItemStyled } from './CartPopup.style';
+import VariantSelector from '../ui/variant-selector/VariantSelector';
+
+import {
+    Attributes,
+    CartAction,
+    CartItemLeft,
+    CartItemRight,
+    CartItemStyled,
+} from './CartPopup.style';
 import allActions from '@/store/allActions';
 import { ICartItem } from '@/store/features/cart/cart.interface';
 
@@ -15,16 +24,41 @@ class CartItems extends Component<Props> {
         return `${this.props.currency}${match?.amount}`;
     };
     render() {
-        const { increaseCartQuantity, decreaseCartQuantity, item } = this.props;
+        const { increaseCartQuantity, decreaseCartQuantity, updateAttr, item } =
+            this.props;
 
         return (
             <CartItemStyled>
-                <div className="left">
+                <CartItemLeft>
                     <div className="info">
                         <h3>{item.product.name}</h3>
                         <p>{this.getAmount()}</p>
+                        <Attributes>
+                            {item.product.attributes?.map((attribute) => (
+                                <VariantSelector
+                                    handleChange={(data) => {
+                                        updateAttr({
+                                            productId: item.product.id,
+                                            attributeId:
+                                                attribute?.id as string,
+                                            item: data.item,
+                                        });
+                                    }}
+                                    selected={{
+                                        item: item.selectedAttribute?.find(
+                                            (item) =>
+                                                item.attributeId ===
+                                                attribute?.id,
+                                        )?.item as any,
+                                    }}
+                                    name={attribute?.name as string}
+                                    key={attribute?.id as string}
+                                    items={attribute as any}
+                                />
+                            ))}
+                        </Attributes>
                     </div>
-                    <div className="action">
+                    <CartAction>
                         <button
                             onClick={() => {
                                 increaseCartQuantity({ product: item.product });
@@ -40,16 +74,18 @@ class CartItems extends Component<Props> {
                         >
                             -
                         </button>
-                    </div>
-                </div>
-                <img
-                    src={
-                        (item.product.gallery &&
-                            (item.product.gallery[0] as string)) ||
-                        ''
-                    }
-                    alt={item.product.name}
-                />
+                    </CartAction>
+                </CartItemLeft>
+                <CartItemRight>
+                    <img
+                        src={
+                            (item.product.gallery &&
+                                (item.product.gallery[0] as string)) ||
+                            ''
+                        }
+                        alt={item.product.name}
+                    />
+                </CartItemRight>
             </CartItemStyled>
         );
     }
@@ -64,58 +100,3 @@ const connector = connect(undefined, {
 type PropsFromRedux = ConnectedProps<typeof connector>;
 
 export default connector(CartItems);
-
-/* 
-{item.product.attributes &&
-  item.product.attributes.map((attribute) => {
-    if (attribute?.name === "Size") {
-      return (
-        attribute.items &&
-        attribute.items?.map((item, index) => {
-          return (
-            <li
-              onClick={() => {
-                updateAttr({
-                  productId: this.props.item.product.id,
-                  name: "Color",
-                  id: item!.id,
-                  value: item!.value as string,
-                  attributeId: "",
-                });
-              }}
-              key={index}
-            >
-              {item?.value}
-            </li>
-          );
-        })
-      );
-    }
-
-    if (attribute?.name === "Color") {
-      return (
-        attribute.items &&
-        attribute.items?.map((item, index) => {
-          return (
-            <div
-              key={index}
-              onClick={() => {
-                updateAttr({
-                  productId: this.props.item.product.id,
-                  name: "Color",
-                  value: item!.value as string,
-                  attributeId: attribute.id,
-                  id: "",
-                });
-              }}
-              style={{
-                width: "5px",
-                height: "5px",
-                backgroundColor: `${item?.value}`,
-              }}
-            ></div>
-          );
-        })
-      );
-    }
-  })} */

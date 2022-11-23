@@ -21,8 +21,16 @@ class CurrencySwitcher extends Component<Props> {
         return (
             <Toggler>
                 {({ open, ref, handleOpen, handleClose }) => (
-                    <Wrapper ref={ref} onClick={handleOpen}>
-                        <div>
+                    <Wrapper ref={ref}>
+                        <div
+                            onClick={() => {
+                                if (open) {
+                                    handleClose();
+                                } else {
+                                    handleOpen();
+                                }
+                            }}
+                        >
                             <p>{this.props.currency}</p>
                             {open ? <IconArrowUp /> : <IconArrowDown />}
                         </div>

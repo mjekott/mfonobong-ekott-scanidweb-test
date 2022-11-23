@@ -42,5 +42,9 @@ export const Wrapper = styled.div`
                 margin-right: 0.2rem;
             }
         }
+
+        @media (max-width: 700px) {
+            transform: translateX(-50%);
+        }
     }
 `;

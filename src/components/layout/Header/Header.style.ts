@@ -3,12 +3,23 @@ import { Link } from 'react-router-dom';
 import { FadeIn } from 'shared/animation';
 import styled from 'styled-components';
 
-export const HeaderWrapper = styled.nav`
+export const HeaderWrapper = styled.div`
+    height: 8rem;
+    position: sticky;
+    top: 0;
+    width: 100%;
     display: flex;
     align-items: center;
-    height: 8rem;
+    background: #fff;
+    z-index: 10;
+`;
+
+export const HeaderNav = styled.nav`
+    display: flex;
+    align-items: center;
     justify-content: space-between;
     position: relative;
+    width: 100%;
 `;
 
 export const HeaderButton = styled.span`

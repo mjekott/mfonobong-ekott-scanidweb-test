@@ -1,4 +1,3 @@
-import { FadeIn } from 'shared/animation';
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
@@ -16,19 +15,18 @@ export const Wrapper = styled.div`
         }
         > p {
             position: absolute;
-            top: -0.3rem;
-            right: -0.5rem;
-            width: 1.25rem;
-            height: 1.25rem;
+            top: -0.7rem;
+            right: -1rem;
+            width: 2rem;
+            height: 2rem;
             background: #000;
             color: #fff;
             display: flex;
             justify-content: center;
             align-items: center;
-            text-align: center;
-            font-size: 0.813rem;
+            font-size: 1.4rem;
             font-weight: 700;
-            border-radius: 100%;
+            border-radius: 50%;
         }
     }
 
@@ -47,23 +45,33 @@ export const Wrapper = styled.div`
         position: absolute;
         top: 200%;
         right: -1rem;
-        background: blue;
         width: 32.5rem;
-        background: white;
-        z-index: 10;
+        background: #fff;
+        z-index: 5;
         display: flex;
         flex-direction: column;
+        max-height: 67.7rem;
+
+        > .title {
+            width: 100%;
+            display: flex;
+            padding: 1rem;
+            font-size: 1.6rem;
+            margin-top: 3rem;
+            > p {
+                font-weight: 700;
+                margin-right: 1rem;
+            }
+        }
 
         > .cart-items {
             display: flex;
             flex-direction: column;
             padding: 1rem;
-            gap: 1.25rem;
             width: 100%;
-            max-height: 50vh;
             overflow-y: auto;
+            height: auto;
             margin-bottom: 2rem;
-            animation: ${FadeIn} 0.5s ease-in-out forwards;
         }
 
         .amount {
@@ -121,51 +129,163 @@ export const Wrapper = styled.div`
     }
 `;
 
+export const CartContainer = styled.div`
+    position: absolute;
+    top: 500%;
+    right: -1rem;
+    width: 32.5rem;
+    background: #fff;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    max-height: 67.7rem;
+
+    > .title {
+        width: 100%;
+        display: flex;
+        padding: 1rem;
+        font-size: 1.6rem;
+        > p {
+            font-weight: 700;
+            margin-right: 1rem;
+        }
+    }
+
+    > .cart-items {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+        width: 100%;
+        overflow-y: auto;
+        height: auto;
+        margin-bottom: 2rem;
+        gap: 4rem;
+    }
+
+    .amount {
+        display: flex;
+        justify-content: space-between;
+        padding: 1rem;
+        align-items: center;
+        width: 100%;
+
+        > p {
+            font-size: 1.6rem;
+            font-weight: 500;
+        }
+        > p:last-child {
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+
+    .checkout {
+        display: flex;
+        justify-content: space-between;
+        padding: 1rem;
+        align-items: center;
+        width: 100%;
+        > a {
+            flex-wrap: nowrap;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            outline: none;
+            border: none;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            text-decoration: none;
+            text-align: center;
+            font-size: 1.4rem;
+            height: 4.3rem;
+            width: 14rem;
+            cursor: pointer;
+        }
+        > a:first-child {
+            margin-right: 0.75rem;
+            background: transparent;
+            border: 1px solid black;
+            color: #000;
+        }
+        > a:last-child {
+            background: ${(props) => props.theme.colors.primary};
+            color: #fff;
+        }
+    }
+`;
+
 export const CartItemStyled = styled.div`
     width: 100%;
-    position: relative;
     display: flex;
-    height: 19rem;
-
+    max-height: 25rem;
+    height: auto;
     justify-content: space-between;
+    margin-top: 4rem;
 
     img {
         height: 100%;
         width: 12.1rem;
-        object-fit: fill;
     }
+`;
 
-    .left {
+export const CartItemLeft = styled.div`
+    display: flex;
+    justify-content: space-between;
+    flex: 1;
+    margin-right: 0.5rem;
+    padding: 0.2rem 0rem;
+
+    > .info {
         display: flex;
-        justify-content: space-between;
-        flex: 1;
-        margin-right: 0.5rem;
-        padding: 0.2rem 0rem;
-
-        > .info {
-            h3 {
-                font-size: 1.6rem;
-                line-height: 160%;
-                font-weight: 300;
-            }
-            p {
-                font-size: 1.6rem;
-                line-height: 160%;
-                font-weight: 500;
-            }
+        flex-direction: column;
+        h3 {
+            font-size: 1.6rem;
+            line-height: 160%;
+            font-weight: 300;
+            word-wrap: break-word;
         }
-
-        .action {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            > button {
-                width: 2.4rem;
-                height: 2.4rem;
-                border: 1px solid black;
-                outline: none;
-                background: #fff;
-            }
+        p {
+            font-size: 1.6rem;
+            line-height: 160%;
+            font-weight: 500;
         }
     }
+`;
+export const CartItemRight = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 12.1rem;
+    > img {
+        height: 100%;
+        width: 100%;
+    }
+`;
+
+export const CartAction = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 1rem;
+    > button {
+        width: 2.4rem;
+        height: 2.4rem;
+        border: 1px solid black;
+        outline: none;
+        background: #fff;
+    }
+    > span {
+        font-size: 1.6rem;
+        font-weight: 500;
+        line-height: 160%;
+    }
+`;
+
+export const Attributes = styled.div`
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
 `;

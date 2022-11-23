@@ -4,10 +4,12 @@ export interface ICartItem {
     quantity: number;
     product: GetProducts_category_products;
     selectedAttribute?: {
-        name: string;
-        id: string;
-        value: string;
-    };
+        attributeId: string;
+        item: {
+            id: string;
+            value: string;
+        };
+    }[];
 }
 
 export interface ICartState {

@@ -42,6 +42,10 @@ class Cart extends Component<Props> {
                                     className="cart"
                                     onClick={(e) => e.stopPropagation()}
                                 >
+                                    <div className="title">
+                                        <p>My Bag</p>
+                                        <span>{totalCart} items</span>
+                                    </div>
                                     {cartItems.length > 0 && (
                                         <div className="cart-items">
                                             {cartItems.map((item) => (

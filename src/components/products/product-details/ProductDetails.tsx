@@ -17,6 +17,7 @@ import { TypeSelectedProps } from '@/components/ui/variant-selector/variant.inte
 import allActions from '@/store/allActions';
 import { SelectedVariant } from '@/store/features/cart/cart.interface';
 import { RootState } from '@/store/store';
+import { getAmount } from '@/utils/getAmount';
 
 type Props = PropsFromRedux & {
     product: IProduct;
@@ -35,35 +36,36 @@ class ProductDetails extends Component<Props, State> {
         };
     }
 
-    getAmount = () => {
-        const match = this.props.product.prices.find(
-            (item) => item.currency.symbol === this.props.currency,
-        );
-        return `${this.props.currency}${match?.amount}`;
-    };
-
     handleVariantChange = (data: TypeSelectedProps) => {
         const { selectedVariants } = this.state;
 
+        // create an empty array to hold variants
         let newVariants: SelectedVariant[] = [];
+
+        // if selected variants already exist and update array
         if (selectedVariants) {
             newVariants = [...selectedVariants];
         }
+
+        // check if a variant with the given attribute id exist
         const index = newVariants.findIndex((item) => {
             return item.attributeId === data.attributeId;
         });
 
+        // if found update that index in the array
         if (index > -1) {
             newVariants[index] = data;
         } else {
+            // if not found push new choice to array
             newVariants?.push(data);
         }
 
+        // add the new choice to state
         this.setState({ ...this.state, selectedVariants: newVariants });
     };
 
     render() {
-        const { product, addToCart } = this.props;
+        const { product, addToCart, currency } = this.props;
         const { name, description, gallery, brand } = product;
         return (
             <ProductDetailsWrapper>
@@ -97,7 +99,7 @@ class ProductDetails extends Component<Props, State> {
 
                     <div className="price">
                         <span> Price:</span>
-                        <span>{this.getAmount()}</span>
+                        <span>{getAmount(product, currency)}</span>
                     </div>
                     <PrimaryButton
                         className="addtocart"

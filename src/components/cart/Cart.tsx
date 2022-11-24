@@ -27,7 +27,7 @@ class Cart extends Component<Props> {
             return (
                 <ErrorDisplay
                     message="No item in cart !!"
-                    buttonText="Go Shopiing"
+                    buttonText="Go Shopping"
                 />
             );
         }

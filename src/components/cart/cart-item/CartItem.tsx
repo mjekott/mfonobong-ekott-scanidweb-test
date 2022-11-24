@@ -2,8 +2,6 @@
 import { Component } from 'react';
 import { ConnectedProps, connect } from 'react-redux';
 
-import ImageSelector from 'utils/ImageSelector';
-
 import {
     Controls,
     Item,
@@ -14,6 +12,10 @@ import {
     ItemRight,
     ItemRightImage,
 } from './Cartitem.style';
+import IconMinus from '@/assets/IconMinus';
+import IconNext from '@/assets/IconNext';
+import IconPlus from '@/assets/IconPlus';
+import IconPrev from '@/assets/IconPrev';
 import VariantSelector from '@/components/ui/variant-selector/VariantSelector';
 import { TypeSelectedProps } from '@/components/ui/variant-selector/variant.interface';
 import allActions from '@/store/allActions';
@@ -21,6 +23,8 @@ import {
     ICartItem,
     SelectedVariant,
 } from '@/store/features/cart/cart.interface';
+import ImageSelector from '@/utils/ImageSelector';
+import { getAmount } from '@/utils/getAmount';
 
 type Props = PropsFromRedux & {
     item: ICartItem;
@@ -29,30 +33,31 @@ type Props = PropsFromRedux & {
 };
 
 class CartItem extends Component<Props> {
-    getAmount = () => {
-        const match = this.props.item.product.prices.find(
-            (item) => item.currency.symbol === this.props.currency,
-        );
-        return `${this.props.currency}${match?.amount}`;
-    };
-
+    /* Handle product variant update */
     handleVariantChange = (data: TypeSelectedProps) => {
         const { item, updateVariant } = this.props;
 
+        //create an empty variant arrray
         let newVariants: SelectedVariant[] = [];
+
+        // check if variant exist in cart and copy to new array
         if (item.selectedVariants) {
             newVariants = [...item.selectedVariants];
         }
+
+        // find variant index with particular attribute id
         const index = newVariants.findIndex((item) => {
             return item.attributeId === data.attributeId;
         });
 
+        // if index is found,update array with new choice or push new choice to array
         if (index > -1) {
             newVariants[index] = data;
         } else {
             newVariants?.push(data);
         }
 
+        // update variant in the store
         updateVariant({
             cartId: item.id,
             selectedVariant: newVariants,
@@ -64,7 +69,7 @@ class CartItem extends Component<Props> {
             increaseCartQuantity,
             decreaseCartQuantity,
             showBrand,
-
+            currency,
             item,
         } = this.props;
 
@@ -73,7 +78,7 @@ class CartItem extends Component<Props> {
                 <ItemLeft>
                     <ItemHeader>{item.product.name}</ItemHeader>
                     {showBrand && <p>{item.product.brand}</p>}
-                    <ItemPrice>{this.getAmount()}</ItemPrice>
+                    <ItemPrice>{getAmount(item.product, currency)}</ItemPrice>
                     <ItemLeftVariant>
                         {item.product.attributes.map((attribute) => {
                             const match =
@@ -103,19 +108,7 @@ class CartItem extends Component<Props> {
                                 increaseCartQuantity({ cartId: item.id });
                             }}
                         >
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                strokeWidth="1.5"
-                                stroke="currentColor"
-                            >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    d="M12 4.5v15m7.5-7.5h-15"
-                                />
-                            </svg>
+                            <IconPlus />
                         </button>
                         <p>{item.quantity}</p>
                         <button
@@ -123,19 +116,7 @@ class CartItem extends Component<Props> {
                                 decreaseCartQuantity({ cartId: item.id });
                             }}
                         >
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                strokeWidth="1.5"
-                                stroke="currentColor"
-                            >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    d="M19.5 12h-15"
-                                />
-                            </svg>
+                            <IconMinus />
                         </button>
                     </div>
                     <ItemRightImage>
@@ -155,48 +136,16 @@ class CartItem extends Component<Props> {
                                 <>
                                     <img
                                         loading="lazy"
-                                        src={
-                                            (item.product.gallery &&
-                                                (item.product.gallery[
-                                                    currentIndex
-                                                ] as string)) ||
-                                            ''
-                                        }
+                                        src={item.product.gallery[currentIndex]}
                                         alt={item.product.name}
                                     />
                                     {noOfImage > 1 && (
                                         <Controls>
                                             <button onClick={handlePrev}>
-                                                <svg
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    fill="none"
-                                                    viewBox="0 0 24 24"
-                                                    strokeWidth="1.5"
-                                                    stroke="currentColor"
-                                                    className="w-6 h-6"
-                                                >
-                                                    <path
-                                                        strokeLinecap="round"
-                                                        strokeLinejoin="round"
-                                                        d="M15.75 19.5L8.25 12l7.5-7.5"
-                                                    />
-                                                </svg>
+                                                <IconPrev />
                                             </button>
                                             <button onClick={handleNext}>
-                                                <svg
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    fill="none"
-                                                    viewBox="0 0 24 24"
-                                                    strokeWidth="1.5"
-                                                    stroke="currentColor"
-                                                    className="w-6 h-6"
-                                                >
-                                                    <path
-                                                        strokeLinecap="round"
-                                                        strokeLinejoin="round"
-                                                        d="M8.25 4.5l7.5 7.5-7.5 7.5"
-                                                    />
-                                                </svg>
+                                                <IconNext />
                                             </button>
                                         </Controls>
                                     )}

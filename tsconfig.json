@@ -22,7 +22,8 @@
             "@/providers/*": ["providers/*"],
             "@/store/*": ["store/*"],
             "@/screens/*": ["screens/*"],
-            "@/shared/*": ["shared/*"]
+            "@/shared/*": ["shared/*"],
+            "@/utils/*": ["utils/*"]
         }
     },
     "include": ["src"]

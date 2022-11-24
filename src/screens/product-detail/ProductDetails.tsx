@@ -5,6 +5,7 @@ import { WithRouterProps, withRouter } from 'hoc/withRouter';
 import { IGetProductDetails } from 'shared/types';
 
 import { withProduct } from './withProduct';
+import ProductDetails from '@/components/products/product-details/ProductDetails';
 
 // eslint-disable-next-line max-len
 
@@ -14,7 +15,7 @@ class ProductDetailScreen extends Component<Props> {
     render() {
         const { data } = this.props;
         if (!data?.product) return null;
-        return null;
+        return <ProductDetails product={data.product} />;
     }
 }
 

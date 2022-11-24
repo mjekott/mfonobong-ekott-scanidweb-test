@@ -1,6 +1,8 @@
 import { Component } from 'react';
 import { ConnectedProps, connect } from 'react-redux';
 
+import { PrimaryButton } from 'shared/styles';
+
 import { CartItemsContainer, Summary, TitleHeader } from './Cart.style';
 import CartItem from './cart-item/CartItem';
 import {
@@ -58,7 +60,7 @@ class Cart extends Component<Props> {
                             </tr>
                         </tbody>
                     </table>
-                    <button>order</button>
+                    <PrimaryButton>order</PrimaryButton>
                 </Summary>
             </div>
         );

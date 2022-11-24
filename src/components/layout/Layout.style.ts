@@ -6,12 +6,13 @@ export const Container = styled.div`
     width: 100%;
     display: flex;
     flex-direction: column;
-    margin: 0 auto;
-    padding: 0 1rem;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 0 10rem;
     position: relative;
 
-    @media (min-width: 1024px) {
-        padding: 0 10rem;
+    @media (max-width: 960px) {
+        padding: 0 1rem;
     }
 
     main {

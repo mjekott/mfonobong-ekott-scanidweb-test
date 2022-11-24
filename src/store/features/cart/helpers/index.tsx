@@ -1,3 +1,4 @@
+import _isEqual from 'lodash.isequal';
 import { v4 as uuid } from 'uuid';
 
 import { IAddCartPayload, IModifyCartQuantity } from '../action.types';
@@ -63,16 +64,30 @@ export const addProductToCart = (
     const id = uuid();
     const newCart = [...cart];
 
-    const newItem: ICartItem = {
-        id,
-        product: payload.product,
-        quantity: 1,
-    };
+    const foundCartItem = newCart.findIndex(
+        (item) =>
+            _isEqual(item.product, payload.product) &&
+            _isEqual(item.selectedVariants, payload.selectedVariant),
+    );
 
-    if (payload.selectedVariant) {
-        newItem.selectedVariants = payload.selectedVariant;
+    if (foundCartItem > -1) {
+        newCart[foundCartItem] = {
+            ...newCart[foundCartItem],
+            selectedVariants: payload.selectedVariant,
+            quantity: newCart[foundCartItem].quantity + 1,
+        };
+    } else {
+        const newItem: ICartItem = {
+            id,
+            product: payload.product,
+            quantity: 1,
+        };
+        if (payload.selectedVariant) {
+            newItem.selectedVariants = payload.selectedVariant;
+        }
+
+        newCart.push(newItem);
     }
-    newCart.push(newItem);
 
     return newCart;
 };

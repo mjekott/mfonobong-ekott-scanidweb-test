@@ -78,12 +78,4 @@ export const Summary = styled.div`
             }
         }
     }
-    button {
-        background: ${(props) => props.theme.colors.primary};
-        color: #fff;
-        height: 4.3rem;
-        width: 27.9rem;
-        text-transform: uppercase;
-        margin-top: 0.4rem;
-    }
 `;

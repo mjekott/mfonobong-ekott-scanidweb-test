@@ -15,6 +15,9 @@ See figma design [here](<https://www.figma.com/file/MSyCAqVy1UgNap0pvqH6H3/Junio
 ## Screenshots
 
 ![Preview](/src/assets/images/preview.gif)
+![Home](/src/assets/images/home.png)
+![Cart](/src/assets/images/cart.png)
+![Product](/src/assets/images/product.png)
 
 ## Set Up
 

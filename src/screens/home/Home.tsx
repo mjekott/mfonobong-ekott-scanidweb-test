@@ -7,6 +7,7 @@ import { IGetProducts } from 'shared/types';
 
 import { GET_PRODUCTS } from './query';
 import ProductList from '@/components/products/ProductList';
+import ErrorDisplay from '@/components/ui/Error/ErrorDisplay';
 
 type Props = WithRouterProps & ChildProps<{}, IGetProducts>;
 
@@ -16,6 +17,14 @@ class Home extends Component<Props> {
     render() {
         const { data } = this.props;
         if (data?.loading) return null;
+        if (data?.error) {
+            <ErrorDisplay message="Opps something went wrong!" route="/" />;
+        }
+
+        if (!data?.error && !data?.category) {
+            return <ErrorDisplay message="No product found!!" route="/" />;
+        }
+
         return (
             <>
                 <TitleHeader>{data?.category?.name}</TitleHeader>

@@ -1,5 +1,5 @@
 import { Suspense, lazy } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 
 const Home = lazy(() => import('@/screens/home/Home'));
 const ProductDetails = lazy(
@@ -9,12 +9,13 @@ const CartPage = lazy(() => import('@/screens/cart/Cart'));
 
 function App() {
     return (
-        <Suspense fallback={<div>loading...</div>}>
+        <Suspense fallback={null}>
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/:slug" element={<Home />} />
                 <Route path="/cart" element={<CartPage />} />
                 <Route path="/product/:slug" element={<ProductDetails />} />
+                <Route path="*" element={<Navigate to="/" />} />
             </Routes>
         </Suspense>
     );

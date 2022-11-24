@@ -3,6 +3,8 @@ import { ConnectedProps, connect } from 'react-redux';
 
 import { PrimaryButton } from 'shared/styles';
 
+import ErrorDisplay from '../ui/Error/ErrorDisplay';
+
 import { CartItemsContainer, Summary, TitleHeader } from './Cart.style';
 import CartItem from './cart-item/CartItem';
 import {
@@ -20,6 +22,15 @@ class Cart extends Component<Props> {
     render() {
         const { cartItems, totalAmount, currency, totalQuantity, tax } =
             this.props;
+
+        if (cartItems.length === 0) {
+            return (
+                <ErrorDisplay
+                    message="No item in cart !!"
+                    buttonText="Go Shopiing"
+                />
+            );
+        }
         return (
             <div>
                 <TitleHeader>Cart</TitleHeader>
@@ -31,6 +42,7 @@ class Cart extends Component<Props> {
                                     item={item}
                                     key={item.id}
                                     currency={this.props.currency}
+                                    showBrand
                                 />
                             ))}
                         </div>

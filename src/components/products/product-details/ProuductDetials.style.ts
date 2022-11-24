@@ -38,14 +38,16 @@ export const ProductDetailsInfoSection = styled.div`
     }
     h2 {
         font-size: 3rem;
+        font-weight: 600;
+        margin-bottom: 3rem;
+    }
+    > p {
+        font-size: 3rem;
         font-weight: 400;
-        margin-bottom: 4rem;
+        margin-bottom: 4.3rem;
     }
     @media screen and (min-width: 700px) {
         width: 35%;
-        h2 {
-            margin-bottom: 6.9rem;
-        }
     }
 
     > .price {
@@ -70,10 +72,13 @@ export const ProductDetailsInfoSection = styled.div`
             line-height: 159.96%;
         }
     }
+    .variantBox {
+        width: 10rem;
+    }
 
     .addtocart {
-        margin-top: 2rem;
         width: 100%;
+        margin-top: 2rem;
     }
 `;
 

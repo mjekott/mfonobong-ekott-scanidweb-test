@@ -6,7 +6,6 @@ import { IProduct } from 'shared/types';
 
 import ProductImageSlider from './ProductImageSlider';
 import {
-    OutOfStock,
     ProductDetailsImageSection,
     ProductDetailsInfoSection,
     ProductDetailsWrapper,
@@ -63,7 +62,7 @@ class ProductDetails extends Component<Props, State> {
 
     render() {
         const { product, addToCart } = this.props;
-        const { name, description, gallery } = product;
+        const { name, description, gallery, brand } = product;
         return (
             <ProductDetailsWrapper>
                 <ProductDetailsImageSection>
@@ -71,6 +70,7 @@ class ProductDetails extends Component<Props, State> {
                 </ProductDetailsImageSection>
                 <ProductDetailsInfoSection>
                     <h2>{name}</h2>
+                    <p>{brand}</p>
                     <div className="variant">
                         {product.attributes.map((attribute) => {
                             const match =
@@ -107,9 +107,9 @@ class ProductDetails extends Component<Props, State> {
                             });
                         }}
                     >
-                        Add to cart
+                        {!product.inStock ? 'Out Of Stock' : 'Add to cart'}
                     </PrimaryButton>
-                    {!product.inStock && <OutOfStock>out of stock</OutOfStock>}
+
                     <div
                         className="description"
                         dangerouslySetInnerHTML={{

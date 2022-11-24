@@ -30,7 +30,8 @@ export const PrimaryButton = styled.button`
     margin-top: 0.4rem;
 
     &:disabled {
-        background: gray;
+        background: #eeeeee;
+        color: rgba(0, 0, 0, 0.6);
         cursor: not-allowed;
     }
 `;

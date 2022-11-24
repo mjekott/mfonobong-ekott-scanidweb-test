@@ -5,7 +5,6 @@ export const Item = styled.div.attrs({ className: 'item' })`
     justify-content: space-between;
     border-bottom: 1px solid #e5e5e5;
     padding: 2.4rem 0;
-    overflow: hidden;
 `;
 
 export const ItemLeft = styled.div.attrs({ className: 'left' })`
@@ -18,12 +17,23 @@ export const ItemHeader = styled.h3.attrs({ className: 'title' })`
     font-weight: 600;
     line-height: 2.7rem;
     margin-bottom: 1.6rem;
+
+    + p {
+        font-size: 3rem;
+        font-weight: 400;
+        line-height: 2.7rem;
+        margin-bottom: 1.6rem;
+
+        + p {
+            font-weight: 700;
+        }
+    }
 `;
 
 export const ItemPrice = styled.p.attrs({ className: 'price' })`
     font-size: 2.4rem;
     line-height: 2.4rem;
-    font-weight: 700;
+    font-weight: 500;
 `;
 
 export const ItemLeftVariant = styled.div`

@@ -22,7 +22,11 @@ import {
     SelectedVariant,
 } from '@/store/features/cart/cart.interface';
 
-type Props = PropsFromRedux & { item: ICartItem; currency: string };
+type Props = PropsFromRedux & {
+    item: ICartItem;
+    currency: string;
+    showBrand?: boolean;
+};
 
 class CartItem extends Component<Props> {
     getAmount = () => {
@@ -59,6 +63,7 @@ class CartItem extends Component<Props> {
         const {
             increaseCartQuantity,
             decreaseCartQuantity,
+            showBrand,
 
             item,
         } = this.props;
@@ -67,6 +72,7 @@ class CartItem extends Component<Props> {
             <Item>
                 <ItemLeft>
                     <ItemHeader>{item.product.name}</ItemHeader>
+                    {showBrand && <p>{item.product.brand}</p>}
                     <ItemPrice>{this.getAmount()}</ItemPrice>
                     <ItemLeftVariant>
                         {item.product.attributes.map((attribute) => {

@@ -50,7 +50,8 @@ export const Wrapper = styled.div`
         z-index: 5;
         display: flex;
         flex-direction: column;
-        max-height: 67.7rem;
+        overflow-y: scroll;
+        max-height: 70vh;
 
         > .title {
             width: 100%;
@@ -70,12 +71,11 @@ export const Wrapper = styled.div`
             padding: 1rem;
             width: 100%;
             overflow-y: auto;
-            height: auto;
             margin-bottom: 2rem;
+            gap: 5rem;
 
             .item {
                 line-height: 2rem;
-                max-height: 25rem;
                 height: auto;
                 border: none;
                 .left {

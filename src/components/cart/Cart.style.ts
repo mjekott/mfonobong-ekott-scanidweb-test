@@ -5,8 +5,12 @@ export const TitleHeader = styled.div`
     font-size: 3.2rem;
     line-height: 160%;
     text-transform: uppercase;
-    margin-top: 8rem;
-    margin-bottom: 5.5rem;
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+    @media screen and (min-width: 720px) {
+        margin-top: 8rem;
+        margin-bottom: 5.5rem;
+    }
 `;
 
 export const CartItemsContainer = styled.div`

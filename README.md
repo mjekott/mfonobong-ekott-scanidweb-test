@@ -12,16 +12,13 @@
 
 See figma design [here](<https://www.figma.com/file/MSyCAqVy1UgNap0pvqH6H3/Junior-Frontend-Test-Designs-(Public)?node-id=0%3A1>)
 
-## Screenshots
-
-![Preview](/src/assets/images/preview.gif)
-![Home](/src/assets/images/home.png)
-![Cart](/src/assets/images/cart.png)
-![Product](/src/assets/images/product.png)
-
 ## Set Up
 
 In the project directory, you can run:
+
+#### Backend Repo
+
+![Backend](https://github.com/scandiweb/junior-react-endpoint)
 
 #### Installation
 
@@ -38,3 +35,10 @@ In the project directory, you can run:
 #### Run Test
 
 `npm test`
+
+## Screenshots
+
+![Preview](/src/assets/images/preview.gif)
+![Home](/src/assets/images/home.png)
+![Cart](/src/assets/images/cart.png)
+![Product](/src/assets/images/product.png)

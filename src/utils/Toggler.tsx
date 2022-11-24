@@ -1,6 +1,7 @@
 import React, { PureComponent, ReactNode } from 'react';
 
 interface IToggler {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     ref: any;
     open: boolean;
     handleOpen: () => void;
@@ -12,6 +13,7 @@ type Props = {
 };
 
 export default class Toggler extends PureComponent<Props, { open: boolean }> {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     private divRef: React.RefObject<any>;
 
     constructor(props: Props) {

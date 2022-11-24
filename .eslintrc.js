@@ -34,7 +34,7 @@ module.exports = {
                 ignoreDeclarationSort: true,
             },
         ],
-        'max-len': [1, { code: 80 }],
+        'max-len': [1, { code: 120 }],
         '@typescript-eslint/ban-types': 'off',
         'react/react-in-jsx-scope': 'off',
         semi: ['error', 'always'],

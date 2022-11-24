@@ -2,7 +2,7 @@ import { Component } from 'react';
 
 import ImageSelector from 'utils/ImageSelector';
 
-import { ImageSlide, OtherImages, PreviewImage } from './ProuductDetials.style';
+import { ImageSlide, OtherImages, PreviewImage } from './ProuductDetails.style';
 
 type Props = {
     images: string[];

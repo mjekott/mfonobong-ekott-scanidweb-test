@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import toast from 'react-hot-toast';
 import { ConnectedProps, connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
@@ -52,6 +53,7 @@ class Product extends Component<Props> {
                     disabled={!product.inStock}
                     onClick={() => {
                         addToCart({ product });
+                        toast.success(`${product.name} added to cart`);
                     }}
                 >
                     <IconCart />

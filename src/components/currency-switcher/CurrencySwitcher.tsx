@@ -74,4 +74,5 @@ const connector = connect(mapStateToProps, { changeCurrency });
 
 type PropsFromRedux = ConnectedProps<typeof connector>;
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default connector(withCurrencies(CurrencySwitcher as any));

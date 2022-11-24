@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import toast from 'react-hot-toast';
 import { ConnectedProps, connect } from 'react-redux';
 
 import { PrimaryButton } from 'shared/styles';
@@ -9,8 +10,9 @@ import {
     ProductDetailsImageSection,
     ProductDetailsInfoSection,
     ProductDetailsWrapper,
-} from './ProuductDetials.style';
+} from './ProuductDetails.style';
 import VariantSelector from '@/components/ui/variant-selector/VariantSelector';
+// eslint-disable-next-line max-len
 import { TypeSelectedProps } from '@/components/ui/variant-selector/variant.interface';
 import allActions from '@/store/allActions';
 import { SelectedVariant } from '@/store/features/cart/cart.interface';
@@ -105,6 +107,7 @@ class ProductDetails extends Component<Props, State> {
                                 product,
                                 selectedVariant: this.state.selectedVariants,
                             });
+                            toast.success(`${product.name} added to cart`);
                         }}
                     >
                         {!product.inStock ? 'Out Of Stock' : 'Add to cart'}

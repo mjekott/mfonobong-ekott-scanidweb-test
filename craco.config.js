@@ -1,6 +1,9 @@
 const path = require(`path`);
 
 module.exports = {
+    eslint: {
+        enable: false,
+    },
     webpack: {
         alias: {
             '@/components': path.resolve(__dirname, 'src/components'),

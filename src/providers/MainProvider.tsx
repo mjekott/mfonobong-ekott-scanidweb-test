@@ -1,4 +1,5 @@
 import { Component, ReactNode } from 'react';
+import { Toaster } from 'react-hot-toast';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 
@@ -21,6 +22,9 @@ export default class MainProvider extends Component<Props> {
                     <Provider store={store}>
                         <PersistGate loading={null} persistor={persistor}>
                             <ThemeProvider>
+                                <Toaster
+                                    containerStyle={{ fontSize: '1.6rem' }}
+                                />
                                 <Layout>{this.props.children}</Layout>
                             </ThemeProvider>
                         </PersistGate>

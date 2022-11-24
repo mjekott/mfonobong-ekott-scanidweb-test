@@ -64,19 +64,23 @@ export const addProductToCart = (
     const id = uuid();
     const newCart = [...cart];
 
-    const foundCartItem = newCart.findIndex(
+    // find any product with the same variant and product
+    const index = newCart.findIndex(
         (item) =>
             _isEqual(item.product, payload.product) &&
             _isEqual(item.selectedVariants, payload.selectedVariant),
     );
 
-    if (foundCartItem > -1) {
-        newCart[foundCartItem] = {
-            ...newCart[foundCartItem],
+    // check if such product exist
+    if (index > -1) {
+        // update the product
+        newCart[index] = {
+            ...newCart[index],
             selectedVariants: payload.selectedVariant,
-            quantity: newCart[foundCartItem].quantity + 1,
+            quantity: newCart[index].quantity + 1,
         };
     } else {
+        // add a new product to cart
         const newItem: ICartItem = {
             id,
             product: payload.product,

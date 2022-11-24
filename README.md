@@ -14,7 +14,7 @@ See figma design [here](<https://www.figma.com/file/MSyCAqVy1UgNap0pvqH6H3/Junio
 
 ## Screenshots
 
-![Preview](/public/preview.webm)
+![Preview](/src/assets/gif/preview.gif)
 
 ## Set Up
 

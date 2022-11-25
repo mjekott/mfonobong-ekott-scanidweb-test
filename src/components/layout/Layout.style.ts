@@ -1,21 +1,19 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
-    max-width: 1440px;
-    min-height: 100vh;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    margin-right: auto;
-    margin-left: auto;
-    padding: 0 10rem;
-    position: relative;
+import { screen } from '@/shared/styles/_var';
 
-    @media (max-width: 960px) {
+export const Container = styled.div`
+    max-width: 144rem;
+    height: inherit;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 10rem;
+
+    @media (max-width: ${screen.lg}) {
         padding: 0 1rem;
     }
 
     main {
-        flex: 1;
+        height: 100%;
     }
 `;

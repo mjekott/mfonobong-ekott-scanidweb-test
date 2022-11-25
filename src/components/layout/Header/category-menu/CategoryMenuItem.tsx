@@ -1,8 +1,9 @@
 import { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 import { WithRouterProps, withRouter } from 'hoc/withRouter';
 
-import { Item } from './CategoryMenu.style';
+import { CategoryItemWrapper } from './CategoryMenu.style';
 
 type Props = {
     name: string;
@@ -28,9 +29,11 @@ class CategoryItem extends Component<Props> {
     render() {
         const { name } = this.props;
         return (
-            <Item to={this.props.link} isactive={this.activeRoute() ? 1 : 0}>
-                <p>{name}</p>
-            </Item>
+            <CategoryItemWrapper isactive={this.activeRoute() ? 1 : 0}>
+                <Link to={this.props.link}>
+                    <span>{name}</span>
+                </Link>
+            </CategoryItemWrapper>
         );
     }
 }

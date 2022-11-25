@@ -6,18 +6,32 @@
     box-sizing: border-box;
     border: none;
     outline: none;
-    text-decoration: none;
 }
 
 html,
 body {
-    font-family: 'Raleway', sans-serif;
-    font-size: 62.5%;
-    min-height: 100vh;
+    height: 100%;
 }
 
-button {
-    cursor: pointer;
+body {
+    font-family: 'Raleway', sans-serif;
+    font-size: 62.5%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    user-drag: none;
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
 }
 
 .hide-scrollbar::-webkit-scrollbar {
@@ -28,13 +42,4 @@ button {
 .hide-scrollbar {
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
-}
-
-img {
-    user-drag: none;
-    -webkit-user-drag: none;
-    user-select: none;
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
 }

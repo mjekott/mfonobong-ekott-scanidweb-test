@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 import { ChildProps } from '@apollo/client/react/hoc';
 import { IGetCategories } from 'shared/types';
@@ -7,7 +8,6 @@ import {
     HeaderButton,
     HeaderNav,
     HeaderWrapper,
-    LogoWrapper,
     RightSide,
 } from './Header.style';
 import SideBar from './SideBar/SideBar';
@@ -73,9 +73,9 @@ class Header extends Component<ChildProps<{}, IGetCategories>, {}> {
                             )}
                         </HeaderButton>
                         <CategoryMenu categories={data?.categories || []} />
-                        <LogoWrapper to="/">
+                        <Link to="/">
                             <Logo />
-                        </LogoWrapper>
+                        </Link>
                         <RightSide>
                             <CurrencySwitcher />
                             <CartPopup />

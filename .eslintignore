@@ -5,3 +5,5 @@ craco.config.js
 .eslintrc.js
 apollo.config.js
 graphql-types
+
+.env

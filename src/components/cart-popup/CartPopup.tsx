@@ -41,7 +41,7 @@ class Cart extends Component<Props> {
                                     onClick={handleClose}
                                 ></div>
                                 <div
-                                    className="cart"
+                                    className="cart hide-scrollbar"
                                     onClick={(e) => e.stopPropagation()}
                                 >
                                     <div className="title">
@@ -49,7 +49,7 @@ class Cart extends Component<Props> {
                                         <span>{totalCart} items</span>
                                     </div>
                                     {cartItems.length > 0 && (
-                                        <div className="cart-items">
+                                        <div className="cart-items ">
                                             {cartItems.length > 0 && (
                                                 <div className="cart-items">
                                                     {cartItems.map((item) => (

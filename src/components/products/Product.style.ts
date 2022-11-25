@@ -1,36 +1,30 @@
 import { FadeIn } from 'shared/animation';
 import styled from 'styled-components';
 
+import { screen } from '@/shared/styles/_var';
+
 export const ProductListContainer = styled.div`
     display: grid;
-    gap: 2.5rem;
-    display: grid;
-    grid-template-columns: repeat(1, minmax(0, 1fr));
-    place-items: center;
-    padding: 1rem 0;
-
-    @media (min-width: 640px) {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-gap: 4rem;
+    @media screen and (min-width: ${screen.sm}) {
+        grid-template-columns: repeat(2, 1fr);
     }
-    @media (min-width: 1024px) {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+    @media screen and (min-width: ${screen.lg}) {
+        grid-template-columns: repeat(3, 1fr);
     }
 `;
 
 export const StyledProductItem = styled.div`
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    padding: 1rem;
+    padding: 1.6rem;
     position: relative;
     transition: all 0.2s ease-in-out;
     animation: ${FadeIn} 0.75s ease-in-out forwards;
 
     img {
+        display: block;
         width: 100%;
-        height: 33.3rem;
+        height: 100%;
+        max-height: 330px;
         margin-bottom: 1.5rem;
         object-fit: fill;
     }
@@ -59,7 +53,7 @@ export const StyledProductItem = styled.div`
     }
 
     .price {
-        font-family: 500;
+        font-weight: 500;
     }
     > button {
         position: absolute;

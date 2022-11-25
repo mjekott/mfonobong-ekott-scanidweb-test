@@ -5,7 +5,12 @@ import { PrimaryButton } from 'shared/styles';
 
 import ErrorDisplay from '../ui/Error/ErrorDisplay';
 
-import { CartItemsContainer, Summary, TitleHeader } from './Cart.style';
+import {
+    CartContainer,
+    CartItemsContainer,
+    Summary,
+    TitleHeader,
+} from './Cart.style';
 import CartItem from './cart-item/CartItem';
 import {
     getTax,
@@ -32,7 +37,7 @@ class Cart extends Component<Props> {
             );
         }
         return (
-            <div>
+            <CartContainer>
                 <TitleHeader>Cart</TitleHeader>
                 <CartItemsContainer>
                     {cartItems.length > 0 && (
@@ -74,7 +79,7 @@ class Cart extends Component<Props> {
                     </table>
                     <PrimaryButton>order</PrimaryButton>
                 </Summary>
-            </div>
+            </CartContainer>
         );
     }
 }

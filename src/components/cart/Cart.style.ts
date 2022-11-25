@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+export const CartContainer = styled.div`
+    padding-bottom: 1rem;
+`;
+
 export const TitleHeader = styled.div`
     font-weight: 700;
     font-size: 3.2rem;
@@ -15,6 +19,7 @@ export const TitleHeader = styled.div`
 
 export const CartItemsContainer = styled.div`
     border-top: 1px solid #e5e5e5;
+
     @media (max-width: 720px) {
         .item {
             line-height: 2rem;

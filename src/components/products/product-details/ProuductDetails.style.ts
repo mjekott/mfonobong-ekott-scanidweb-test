@@ -89,6 +89,9 @@ export const ProductDetailsInfoSection = styled.div`
         > div {
             gap: 1.2rem;
         }
+        > p {
+            font-size: 1.8rem;
+        }
     }
     h2,
     p {

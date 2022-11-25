@@ -107,7 +107,8 @@ export const ProductDetailsInfoSection = styled.div`
         margin-bottom: 4.3rem;
     }
     @media screen and (min-width: ${screen.lg}) {
-        width: 24.3%;
+        width: full;
+        max-width: 29.2rem;
         margin-right: 13%;
     }
 

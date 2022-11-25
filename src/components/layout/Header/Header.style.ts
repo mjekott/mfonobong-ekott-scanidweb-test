@@ -17,6 +17,9 @@ export const HeaderNav = styled.nav`
     align-items: center;
     justify-content: space-between;
     position: relative;
+    @media screen and (max-width: ${screen.lg}) {
+        padding-right: 1rem;
+    }
 `;
 
 export const HeaderButton = styled.span`

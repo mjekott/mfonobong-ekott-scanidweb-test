@@ -54,6 +54,8 @@ export const OtherImages = styled.div`
     @media screen and (max-width: ${screen.lg}) {
         flex-direction: row;
         overflow-x: scroll;
+        justify-content: center;
+        align-items: flex-start;
     }
 `;
 
@@ -65,6 +67,7 @@ export const PreviewImage = styled.div`
     align-items: center;
     > img {
         object-fit: fill;
+        max-width: 610px;
         width: 100%;
         height: 511px;
     }

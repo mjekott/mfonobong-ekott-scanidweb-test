@@ -56,6 +56,7 @@ export const OtherImages = styled.div`
         overflow-x: scroll;
         justify-content: center;
         align-items: flex-start;
+        padding: 0 0.2rem;
     }
 `;
 

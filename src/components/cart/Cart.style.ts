@@ -4,7 +4,7 @@ export const CartContainer = styled.div`
     padding-bottom: 1rem;
 `;
 
-export const TitleHeader = styled.div`
+export const CartTitleHeader = styled.div`
     font-weight: 700;
     font-size: 3.2rem;
     line-height: 160%;
@@ -74,7 +74,7 @@ export const CartItemsContainer = styled.div`
     }
 `;
 
-export const Summary = styled.div`
+export const CartSummary = styled.div`
     font-size: 2.4rem;
     margin-top: 3.2rem;
     margin-bottom: 10rem;

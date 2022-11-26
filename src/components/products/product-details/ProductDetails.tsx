@@ -38,8 +38,6 @@ class ProductDetails extends Component<Props, State> {
 
     handleVariantChange = (data: TypeSelectedProps) => {
         const { selectedVariants } = this.state;
-
-        // create an empty array to hold variants
         let newVariants: SelectedVariant[] = [];
 
         // if selected variants already exist and update array

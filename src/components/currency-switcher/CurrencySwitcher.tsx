@@ -8,7 +8,7 @@ import { GetCurrencies } from 'shared/types';
 import { RootState } from 'store/store';
 import Toggler from 'utils/Toggler';
 
-import { Wrapper } from './CurrencyWrapper.style';
+import { CurrencySwitcherWrapper } from './CurrencyWrapper.style';
 import { withCurrencies } from './withCurrencies';
 import allActions from '@/store/allActions';
 
@@ -21,8 +21,9 @@ class CurrencySwitcher extends Component<Props> {
         return (
             <Toggler>
                 {({ open, ref, handleOpen, handleClose }) => (
-                    <Wrapper ref={ref}>
+                    <CurrencySwitcherWrapper ref={ref}>
                         <div
+                            className="currency_main"
                             onClick={() => {
                                 if (open) {
                                     handleClose();
@@ -36,6 +37,7 @@ class CurrencySwitcher extends Component<Props> {
                         </div>
                         {open && (
                             <ul
+                                className="currency_list"
                                 onClick={(e) => {
                                     e.stopPropagation();
                                 }}
@@ -43,6 +45,7 @@ class CurrencySwitcher extends Component<Props> {
                                 {data?.currencies &&
                                     data.currencies.map((item) => (
                                         <li
+                                            className="currency_list_item"
                                             key={item?.label}
                                             onClick={() => {
                                                 this.props.changeCurrency(
@@ -57,7 +60,7 @@ class CurrencySwitcher extends Component<Props> {
                                     ))}
                             </ul>
                         )}
-                    </Wrapper>
+                    </CurrencySwitcherWrapper>
                 )}
             </Toggler>
         );

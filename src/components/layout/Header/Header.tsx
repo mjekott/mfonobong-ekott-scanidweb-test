@@ -14,7 +14,7 @@ import SideBar from './SideBar/SideBar';
 import CategoryMenu from './category-menu/CategoryMenu';
 import { withCategories } from './withCategories';
 import { Logo } from '@/assets/Logo';
-import CartPopup from '@/components/cart-popup/CartPopup';
+import CartDropdown from '@/components/cart/cart-dropdown/CartDropdown';
 import CurrencySwitcher from '@/components/currency-switcher/CurrencySwitcher';
 
 class Header extends Component<ChildProps<{}, IGetCategories>, {}> {
@@ -78,7 +78,7 @@ class Header extends Component<ChildProps<{}, IGetCategories>, {}> {
                         </Link>
                         <RightSide>
                             <CurrencySwitcher />
-                            <CartPopup />
+                            <CartDropdown />
                         </RightSide>
                     </HeaderNav>
                 </HeaderWrapper>

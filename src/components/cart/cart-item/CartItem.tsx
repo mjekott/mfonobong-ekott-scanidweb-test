@@ -3,14 +3,14 @@ import { Component } from 'react';
 import { ConnectedProps, connect } from 'react-redux';
 
 import {
-    Controls,
-    Item,
-    ItemHeader,
-    ItemLeft,
-    ItemLeftVariant,
-    ItemPrice,
-    ItemRight,
-    ItemRightImage,
+    CartItemHeader,
+    CartItemLeft,
+    CartItemPrice,
+    CartItemRight,
+    CartItemRightImage,
+    CartItemRightImageControls,
+    CartItemVariant,
+    CartItemWrapper,
 } from './Cartitem.style';
 import IconMinus from '@/assets/IconMinus';
 import IconNext from '@/assets/IconNext';
@@ -33,11 +33,9 @@ type Props = PropsFromRedux & {
 };
 
 class CartItem extends Component<Props> {
-    /* Handle product variant update */
     handleVariantChange = (data: TypeSelectedProps) => {
         const { item, updateVariant } = this.props;
 
-        //create an empty variant arrray
         let newVariants: SelectedVariant[] = [];
 
         // check if variant exist in cart and copy to new array
@@ -74,12 +72,14 @@ class CartItem extends Component<Props> {
         } = this.props;
 
         return (
-            <Item>
-                <ItemLeft>
-                    <ItemHeader>{item.product.name}</ItemHeader>
+            <CartItemWrapper>
+                <CartItemLeft>
+                    <CartItemHeader>{item.product.name}</CartItemHeader>
                     {showBrand && <p>{item.product.brand}</p>}
-                    <ItemPrice>{getAmount(item.product, currency)}</ItemPrice>
-                    <ItemLeftVariant>
+                    <CartItemPrice>
+                        {getAmount(item.product, currency)}
+                    </CartItemPrice>
+                    <CartItemVariant>
                         {item.product.attributes.map((attribute) => {
                             const match =
                                 item.selectedVariants &&
@@ -99,9 +99,9 @@ class CartItem extends Component<Props> {
                                 />
                             );
                         })}
-                    </ItemLeftVariant>
-                </ItemLeft>
-                <ItemRight>
+                    </CartItemVariant>
+                </CartItemLeft>
+                <CartItemRight>
                     <div>
                         <button
                             onClick={() => {
@@ -119,7 +119,7 @@ class CartItem extends Component<Props> {
                             <IconMinus />
                         </button>
                     </div>
-                    <ItemRightImage>
+                    <CartItemRightImage>
                         <ImageSelector
                             noOfImages={
                                 item.product.gallery
@@ -140,21 +140,21 @@ class CartItem extends Component<Props> {
                                         alt={item.product.name}
                                     />
                                     {noOfImage > 1 && (
-                                        <Controls>
+                                        <CartItemRightImageControls>
                                             <button onClick={handlePrev}>
                                                 <IconPrev />
                                             </button>
                                             <button onClick={handleNext}>
                                                 <IconNext />
                                             </button>
-                                        </Controls>
+                                        </CartItemRightImageControls>
                                     )}
                                 </>
                             )}
                         </ImageSelector>
-                    </ItemRightImage>
-                </ItemRight>
-            </Item>
+                    </CartItemRightImage>
+                </CartItemRight>
+            </CartItemWrapper>
         );
     }
 }

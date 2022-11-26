@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.div`
+export const CurrencySwitcherWrapper = styled.div`
     position: relative;
 
-    > div {
+    > .currency_main {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -15,7 +15,7 @@ export const Wrapper = styled.div`
         }
     }
 
-    > ul {
+    > .currency_list {
         position: absolute;
         top: 200%;
         background: blue;
@@ -24,7 +24,7 @@ export const Wrapper = styled.div`
         background: white;
         z-index: 5;
         box-shadow: 0px 4px 35px rgba(168, 172, 176, 0.19);
-        > li {
+        > .currency_list_item {
             display: block;
             display: flex;
             justify-content: center;

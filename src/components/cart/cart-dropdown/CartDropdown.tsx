@@ -2,35 +2,25 @@ import { Component } from 'react';
 import { ConnectedProps, connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import IconCart from 'assets/IconCart';
-import { RootState } from 'store/store';
-import Toggler from 'utils/Toggler';
+import IconCart from '../../../assets/IconCart';
+import CartItem from '../cart-item/CartItem';
 
-import CartItem from '../cart/cart-item/CartItem';
-
-import { Wrapper } from './CartPopup.style';
+import { CartDropDownWrapper } from './CartDropdown.style';
 import { getTotal, getTotalQuantity } from '@/store/features/cart/helpers';
+import { RootState } from '@/store/store';
+import Toggler from '@/utils/Toggler';
 
 type Props = PropsFromRedux;
 
-class Cart extends Component<Props> {
+class CartDropdown extends Component<Props> {
     render() {
         const { totalCart, cartItems, totalAmount, currency } = this.props;
 
         return (
             <Toggler>
-                {({ ref, open, handleOpen, handleClose }) => (
-                    <Wrapper
-                        ref={ref}
-                        onClick={() => {
-                            if (!open) {
-                                handleOpen();
-                            } else {
-                                handleClose();
-                            }
-                        }}
-                    >
-                        <div>
+                {({ ref, open, toggleOpen, handleClose }) => (
+                    <CartDropDownWrapper ref={ref} onClick={toggleOpen}>
+                        <div className="main">
                             <IconCart />
                             {cartItems.length > 0 && <p>{totalCart}</p>}
                         </div>
@@ -48,7 +38,7 @@ class Cart extends Component<Props> {
                                         <p>My Bag</p>
                                         <span>{totalCart} items</span>
                                     </div>
-                                    {cartItems.length > 0 && (
+                                    {!!cartItems.length && (
                                         <div className="cart-items ">
                                             {cartItems.length > 0 && (
                                                 <div className="cart-items">
@@ -86,7 +76,7 @@ class Cart extends Component<Props> {
                                 </div>
                             </>
                         )}
-                    </Wrapper>
+                    </CartDropDownWrapper>
                 )}
             </Toggler>
         );
@@ -106,4 +96,4 @@ const connector = connect(mapStateToProps);
 
 type PropsFromRedux = ConnectedProps<typeof connector>;
 
-export default connector(Cart);
+export default connector(CartDropdown);

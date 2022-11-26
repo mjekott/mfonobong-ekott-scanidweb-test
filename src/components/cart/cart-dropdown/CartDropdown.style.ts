@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.div`
+export const CartDropDownWrapper = styled.div`
     position: relative;
 
-    > div {
+    > .main {
         position: relative;
         display: flex;
         align-items: center;
@@ -183,93 +183,6 @@ export const Wrapper = styled.div`
                 background: ${(props) => props.theme.colors.primary};
                 color: #fff;
             }
-        }
-    }
-`;
-
-export const CartContainer = styled.div`
-    position: absolute;
-    top: 500%;
-    right: -1rem;
-    width: 32.5rem;
-    background: #fff;
-    z-index: 5;
-    display: flex;
-    flex-direction: column;
-    max-height: 67.7rem;
-
-    > .title {
-        width: 100%;
-        display: flex;
-        padding: 1rem;
-        font-size: 1.6rem;
-        > p {
-            font-weight: 700;
-            margin-right: 1rem;
-        }
-    }
-
-    > .cart-items {
-        display: flex;
-        flex-direction: column;
-        padding: 1rem;
-        width: 100%;
-        overflow-y: auto;
-        height: auto;
-        margin-bottom: 2rem;
-        gap: 4rem;
-    }
-
-    .amount {
-        display: flex;
-        justify-content: space-between;
-        padding: 1rem;
-        align-items: center;
-        width: 100%;
-
-        > p {
-            font-size: 1.6rem;
-            font-weight: 500;
-        }
-        > p:last-child {
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-    }
-
-    .checkout {
-        display: flex;
-        justify-content: space-between;
-        padding: 1rem;
-        align-items: center;
-        width: 100%;
-        > a {
-            flex-wrap: nowrap;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            outline: none;
-            border: none;
-            font-size: 0.875rem;
-            text-transform: uppercase;
-            text-decoration: none;
-            text-align: center;
-            font-size: 1.4rem;
-            height: 4.3rem;
-            width: 14rem;
-            cursor: pointer;
-        }
-        > a:first-child {
-            margin-right: 0.75rem;
-            background: transparent;
-            border: 1px solid black;
-            color: #000;
-        }
-        > a:last-child {
-            background: ${(props) => props.theme.colors.primary};
-            color: #fff;
         }
     }
 `;

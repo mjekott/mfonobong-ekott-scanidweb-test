@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import IconCart from 'assets/IconCart';
 import { IProduct } from 'shared/types';
 
-import { StyledProductItem } from './Product.style';
+import { ProductWrapper } from './Product.style';
 import allActions from '@/store/allActions';
 import { RootState } from '@/store/store';
 
@@ -27,12 +27,13 @@ class Product extends Component<Props> {
     render() {
         const { product, addToCart } = this.props;
         return (
-            <StyledProductItem>
+            <ProductWrapper>
                 <Link
                     style={{ position: 'relative' }}
                     to={`/product/${product.id}`}
                 >
                     <img
+                        className="product-image"
                         loading="lazy"
                         src={
                             (product.gallery &&
@@ -58,7 +59,7 @@ class Product extends Component<Props> {
                 >
                     <IconCart />
                 </button>
-            </StyledProductItem>
+            </ProductWrapper>
         );
     }
 }

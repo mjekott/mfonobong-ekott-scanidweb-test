@@ -6,6 +6,7 @@ interface IToggler {
     open: boolean;
     handleOpen: () => void;
     handleClose: () => void;
+    toggleOpen: () => void;
 }
 
 type Props = {
@@ -14,14 +15,14 @@ type Props = {
 
 export default class Toggler extends PureComponent<Props, { open: boolean }> {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    private divRef: React.RefObject<any>;
+    private ref: React.RefObject<any>;
 
     constructor(props: Props) {
         super(props);
         this.state = {
             open: false,
         };
-        this.divRef = React.createRef();
+        this.ref = React.createRef();
     }
 
     componentDidMount() {
@@ -33,10 +34,7 @@ export default class Toggler extends PureComponent<Props, { open: boolean }> {
     }
 
     handleClickOutside = (event: MouseEvent) => {
-        if (
-            this.divRef.current &&
-            !this.divRef.current.contains(event.target)
-        ) {
+        if (this.ref.current && !this.ref.current.contains(event.target)) {
             this.setState({ ...this.state, open: false });
         }
     };
@@ -49,12 +47,24 @@ export default class Toggler extends PureComponent<Props, { open: boolean }> {
         this.setState({ ...this.state, open: false });
     };
 
+    toggleOpen = () => {
+        this.setState({ ...this.state, open: !this.state.open });
+    };
+
     render() {
+        const {
+            handleClose,
+            handleOpen,
+            toggleOpen,
+            state: { open },
+            ref,
+        } = this;
         return this.props.children({
-            ref: this.divRef,
-            open: this.state.open,
-            handleClose: this.handleClose,
-            handleOpen: this.handleOpen,
+            ref,
+            open,
+            handleClose,
+            handleOpen,
+            toggleOpen,
         });
     }
 }

@@ -1,17 +1,16 @@
 import { Component } from 'react';
 import { ConnectedProps, connect } from 'react-redux';
 
-import { PrimaryButton } from 'shared/styles';
-
 import ErrorDisplay from '../ui/Error/ErrorDisplay';
 
 import {
     CartContainer,
     CartItemsContainer,
-    Summary,
-    TitleHeader,
+    CartSummary,
+    CartTitleHeader,
 } from './Cart.style';
 import CartItem from './cart-item/CartItem';
+import { PrimaryButton } from '@/shared/styles';
 import {
     getTax,
     getTotal,
@@ -38,7 +37,7 @@ class Cart extends Component<Props> {
         }
         return (
             <CartContainer>
-                <TitleHeader>Cart</TitleHeader>
+                <CartTitleHeader>Cart</CartTitleHeader>
                 <CartItemsContainer>
                     {cartItems.length > 0 && (
                         <div className="cart-items">
@@ -54,7 +53,7 @@ class Cart extends Component<Props> {
                     )}
                 </CartItemsContainer>
 
-                <Summary>
+                <CartSummary>
                     <table>
                         <tbody>
                             <tr>
@@ -78,7 +77,7 @@ class Cart extends Component<Props> {
                         </tbody>
                     </table>
                     <PrimaryButton>order</PrimaryButton>
-                </Summary>
+                </CartSummary>
             </CartContainer>
         );
     }

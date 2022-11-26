@@ -14,13 +14,13 @@ export const ProductListContainer = styled.div`
     }
 `;
 
-export const StyledProductItem = styled.div`
+export const ProductWrapper = styled.div`
     padding: 1.6rem;
     position: relative;
     transition: all 0.2s ease-in-out;
     animation: ${FadeIn} 0.75s ease-in-out forwards;
 
-    img {
+    .product-image {
         display: block;
         width: 100%;
         height: 100%;
@@ -28,7 +28,7 @@ export const StyledProductItem = styled.div`
         margin-bottom: 1.5rem;
         object-fit: fill;
     }
-    img + div {
+    .product-image + div {
         position: absolute;
         top: 0;
         left: 0;
@@ -48,11 +48,11 @@ export const StyledProductItem = styled.div`
         line-height: 160%;
     }
 
-    .title {
+    > .title {
         font-weight: 300;
     }
 
-    .price {
+    > .price {
         font-weight: 500;
     }
     > button {

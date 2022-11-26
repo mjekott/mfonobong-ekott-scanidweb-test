@@ -1,18 +1,18 @@
 import styled from 'styled-components';
 
-export const Item = styled.div.attrs({ className: 'item' })`
+export const CartItemWrapper = styled.div.attrs({ className: 'item' })`
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid #e5e5e5;
     padding: 2.4rem 0;
 `;
 
-export const ItemLeft = styled.div.attrs({ className: 'left' })`
+export const CartItemLeft = styled.div.attrs({ className: 'left' })`
     display: flex;
     flex-direction: column;
 `;
 
-export const ItemHeader = styled.h3.attrs({ className: 'title' })`
+export const CartItemHeader = styled.h3.attrs({ className: 'title' })`
     font-size: 3rem;
     font-weight: 600;
     line-height: 2.7rem;
@@ -30,20 +30,20 @@ export const ItemHeader = styled.h3.attrs({ className: 'title' })`
     }
 `;
 
-export const ItemPrice = styled.p.attrs({ className: 'price' })`
+export const CartItemPrice = styled.p.attrs({ className: 'price' })`
     font-size: 2.4rem;
     line-height: 2.4rem;
     font-weight: 500;
 `;
 
-export const ItemLeftVariant = styled.div`
+export const CartItemVariant = styled.div`
     margin-top: auto;
     > div {
         margin-top: 1rem;
     }
 `;
 
-export const ItemRight = styled.div.attrs({ className: 'right' })`
+export const CartItemRight = styled.div.attrs({ className: 'right' })`
     display: flex;
     > div:first-child {
         display: flex;
@@ -71,7 +71,9 @@ export const ItemRight = styled.div.attrs({ className: 'right' })`
     }
 `;
 
-export const ItemRightImage = styled.div.attrs({ className: 'imageHolder' })`
+export const CartItemRightImage = styled.div.attrs({
+    className: 'imageHolder',
+})`
     width: 20rem;
     height: 28.8rem;
     position: relative;
@@ -83,7 +85,7 @@ export const ItemRightImage = styled.div.attrs({ className: 'imageHolder' })`
     }
 `;
 
-export const Controls = styled.div.attrs({
+export const CartItemRightImageControls = styled.div.attrs({
     className: 'slider-control',
 })`
     position: absolute;

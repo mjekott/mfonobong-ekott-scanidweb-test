@@ -14,7 +14,12 @@ See figma design [here](<https://www.figma.com/file/MSyCAqVy1UgNap0pvqH6H3/Junio
 
 ## Set Up
 
-In the project directory, you can run:
+clone repo
+`git clone https://github.com/mjekott/mfonobong-ekott-scanidweb-test`
+
+
+create a .env file in project root and append
+REACT_APP_GRAPHQL_ENDPOINT=http://localhost:4000/grapqhl
 
 #### Backend Repo
 

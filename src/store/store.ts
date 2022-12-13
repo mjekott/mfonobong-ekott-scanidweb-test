@@ -13,10 +13,7 @@ const persistConfig = {
 const reducer = combineReducers({
     ...reducers,
 });
-const persitedReducer = persistReducer(
-    persistConfig,
-    reducer,
-) as typeof reducers;
+const persitedReducer = persistReducer(persistConfig, reducer);
 
 const store = configureStore({
     reducer: persitedReducer,

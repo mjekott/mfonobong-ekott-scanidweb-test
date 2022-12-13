@@ -2,6 +2,7 @@ import { Component } from 'react';
 import toast from 'react-hot-toast';
 import { ConnectedProps, connect } from 'react-redux';
 
+import parse from 'html-react-parser';
 import { PrimaryButton } from 'shared/styles';
 import { IProduct } from 'shared/types';
 
@@ -113,12 +114,7 @@ class ProductDetails extends Component<Props, State> {
                         {!product.inStock ? 'Out Of Stock' : 'Add to cart'}
                     </PrimaryButton>
 
-                    <div
-                        className="description"
-                        dangerouslySetInnerHTML={{
-                            __html: description,
-                        }}
-                    ></div>
+                    <div className="description">{parse(description)}</div>
                 </ProductDetailsInfoSection>
             </ProductDetailsWrapper>
         );

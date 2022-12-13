@@ -17,9 +17,9 @@ See figma design [here](<https://www.figma.com/file/MSyCAqVy1UgNap0pvqH6H3/Junio
 clone repo
 `git clone https://github.com/mjekott/mfonobong-ekott-scanidweb-test`
 
+## Connect to backend
 
-create a .env file in project root and append
-REACT_APP_GRAPHQL_ENDPOINT=http://localhost:4000/grapqhl
+rename .env.example to .env and add backend url
 
 #### Backend Repo
 

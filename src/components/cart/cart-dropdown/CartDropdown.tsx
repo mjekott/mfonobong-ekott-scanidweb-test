@@ -22,7 +22,7 @@ class CartDropdown extends Component<Props> {
                     <CartDropDownWrapper ref={ref} onClick={toggleOpen}>
                         <div className="main">
                             <IconCart />
-                            {cartItems.length > 0 && <p>{totalCart}</p>}
+                            {cartItems.length > 0 && <span>{totalCart}</span>}
                         </div>
                         {open && (
                             <>
